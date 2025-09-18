@@ -1,10 +1,10 @@
-import { drizzle } from 'drizzle-orm/postgres-js';
-import postgres from 'postgres';
+import { drizzle } from "drizzle-orm/postgres-js";
+import postgres from "postgres";
 import { users } from "../src/lib/server/db/schema.js";
 import bcrypt from "bcryptjs";
 import { eq } from "drizzle-orm";
 import { nanoid } from "nanoid";
-import * as dotenv from 'dotenv';
+import * as dotenv from "dotenv";
 
 // Load environment variables
 dotenv.config();
@@ -17,28 +17,28 @@ async function seed() {
   try {
     console.log("🌱 Seeding database...");
 
-    // Check if test user already exists
+    // Check if admin user already exists
     const existingUser = await db.query.users.findFirst({
-      where: eq(users.email, "test@example.com"),
+      where: eq(users.email, "admin@shieldauth.com"),
     });
 
     if (!existingUser) {
-      // Create test user
-      const hashedPassword = await bcrypt.hash("password123", 12);
+      // Create admin user
+      const hashedPassword = await bcrypt.hash("admin4223", 12);
 
       await db.insert(users).values({
         id: nanoid(),
-        name: "Test User",
-        email: "test@example.com",
+        name: "Admin ShieldAuth",
+        email: "admin@shieldauth.com",
         password: hashedPassword,
         emailVerified: new Date(),
-        role: "user",
+        role: "admin",
         isActive: true,
       });
 
-      console.log("✅ Test user created: test@example.com / password123");
+      console.log("✅ Admin user created: admin@shieldauth.com / admin4223");
     } else {
-      console.log("ℹ️ Test user already exists");
+      console.log("ℹ️ Admin user already exists");
     }
 
     console.log("🎉 Seeding completed!");

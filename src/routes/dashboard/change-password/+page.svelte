@@ -38,26 +38,15 @@
 
       <!-- Error Messages -->
       {#if $page.form?.error}
-<<<<<<< HEAD
         <div class="mb-6 p-4 bg-sky-50 dark:bg-sky-900/20 border border-sky-200 dark:border-sky-800 rounded-lg">
           <div class="flex">
             <div class="flex-shrink-0">
               <svg class="h-5 w-5 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-=======
-        <div class="mb-6 p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
-          <div class="flex">
-            <div class="flex-shrink-0">
-              <svg class="h-5 w-5 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
->>>>>>> 4ab6d2b01e60bcee7535a1a381e212be16fa1049
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
             <div class="ml-3">
-<<<<<<< HEAD
               <p class="text-sm text-sky-700 dark:text-sky-200">{$page.form.error}</p>
-=======
-              <p class="text-sm text-red-700 dark:text-red-200">{$page.form.error}</p>
->>>>>>> 4ab6d2b01e60bcee7535a1a381e212be16fa1049
             </div>
           </div>
         </div>

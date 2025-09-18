@@ -14,26 +14,15 @@
 	let messages = $state([
 		{
 			id: 1,
-<<<<<<< HEAD
 			text: "Hello! I'm your AI assistant. How can I help you today?",
 			sender: 'bot',
 			timestamp: new Date()
-=======
-			text: "Hello! I'm DoraTalk, your AI assistant powered by Gemini. How can I help you today?",
-			sender: 'bot',
-			timestamp: new Date(),
-			hasImage: true,
-			imageUrl: '/images/doraemon/fullbody.png'
->>>>>>> 4ab6d2b01e60bcee7535a1a381e212be16fa1049
 		}
 	]);
 	
 	let inputMessage = $state('');
 	let isLoading = $state(false);
-<<<<<<< HEAD
 	let sidebarOpen = $state(false);
-=======
->>>>>>> 4ab6d2b01e60bcee7535a1a381e212be16fa1049
 
 	// Send message function
 	async function sendMessage() {
@@ -97,13 +86,11 @@
 	function formatTime(date: Date) {
 		return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 	}
-<<<<<<< HEAD
 
 	// Toggle sidebar
 	function toggleSidebar() {
 		sidebarOpen = !sidebarOpen;
 	}
-
 
 	// Start new chat
 	function startNewChat() {
@@ -299,16 +286,16 @@
 						class="absolute right-2 top-1/2 transform -translate-y-1/2 p-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
 						aria-label="Send message"
 					>
-							{#if isLoading}
-								<svg class="w-5 h-5 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-								</svg>
-							{:else}
-								<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-								</svg>
-							{/if}
-						</button>
+						{#if isLoading}
+							<svg class="w-5 h-5 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+							</svg>
+						{:else}
+							<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+							</svg>
+						{/if}
+					</button>
 					</div>
 					<p class="text-xs text-slate-500 mt-2 text-center">
 						Press Enter to send, Shift+Enter for new line
@@ -329,177 +316,6 @@
 		></div>
 	{/if}
 </div>
-=======
-</script>
-
-<svelte:head>
-	<title>DoraTalk - AI Chatbot | ShieldAuth</title>
-	<meta name="description" content="Chat with DoraTalk, your AI assistant powered by Gemini" />
-</svelte:head>
-
-<!-- Header -->
-<header class="bg-slate-800 border-b border-slate-700">
-	<div class="max-w-4xl mx-auto px-4 py-4">
-		<div class="flex items-center justify-between">
-			<div class="flex items-center space-x-4">
-				<button 
-					on:click={() => goto('/')}
-					class="text-slate-400 hover:text-white transition-colors"
-				>
-					<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-					</svg>
-				</button>
-				<div class="flex items-center space-x-3">
-					<div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center relative p-1">
-						<!-- Doraemon Face -->
-						<div class="w-8 h-8 rounded-full overflow-hidden">
-							<img 
-								src="/images/doraemon/face.png" 
-								alt="Doraemon" 
-								class="w-full h-full object-cover rounded-full"
-								on:error={(e) => {
-									// Fallback to CSS if image fails to load
-									e.target.style.display = 'none';
-									e.target.nextElementSibling.style.display = 'block';
-								}}
-							/>
-							<!-- Fallback CSS face (hidden by default) -->
-							<div class="w-full h-full relative hidden" style="display: none;">
-								<div class="absolute top-0 left-0 w-full h-4 bg-blue-500 rounded-t-full"></div>
-								<div class="absolute bottom-0 left-0 w-full h-4 bg-white rounded-b-full"></div>
-								<div class="absolute top-1 left-1 w-2 h-1.5 bg-white rounded-full"></div>
-								<div class="absolute top-1 right-1 w-2 h-1.5 bg-white rounded-full"></div>
-								<div class="absolute top-1.5 left-1.5 w-0.5 h-0.5 bg-black rounded-full"></div>
-								<div class="absolute top-1.5 right-1.5 w-0.5 h-0.5 bg-black rounded-full"></div>
-								<div class="absolute top-2.5 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-red-500 rounded-full"></div>
-								<div class="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-3 h-1.5 bg-red-500 rounded-full"></div>
-							</div>
-						</div>
-					</div>
-					<div>
-						<h1 class="text-xl font-bold text-white">DoraTalk</h1>
-						<p class="text-sm text-blue-400">Powered by Gemini AI</p>
-					</div>
-				</div>
-			</div>
-			<div class="flex items-center space-x-2">
-				<div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-				<span class="text-sm text-slate-400">Online</span>
-			</div>
-		</div>
-	</div>
-</header>
-
-<!-- Chat Container -->
-<main class="flex-1 flex flex-col max-w-4xl mx-auto w-full">
-	<!-- Messages Area -->
-	<div class="flex-1 overflow-y-auto p-4 space-y-4">
-		{#each messages as message (message.id)}
-			<div class="flex {message.sender === 'user' ? 'justify-end' : 'justify-start'}">
-				<div class="max-w-xs lg:max-w-md">
-					<div class="flex items-end space-x-2 {message.sender === 'user' ? 'flex-row-reverse space-x-reverse' : ''}">
-						<!-- Avatar -->
-						<div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 {
-							message.sender === 'user' 
-								? 'bg-blue-600' 
-								: 'bg-gradient-to-br from-purple-600 to-pink-600'
-						}">
-							{#if message.sender === 'user'}
-								<svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-								</svg>
-							{:else}
-								<svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-								</svg>
-							{/if}
-						</div>
-						
-						<!-- Message Bubble -->
-						<div class="px-4 py-2 rounded-2xl {
-							message.sender === 'user'
-								? 'bg-blue-600 text-white'
-								: 'bg-slate-700 text-slate-200'
-						}">
-							{#if message.hasImage && message.imageUrl}
-								<div class="mb-2 flex justify-center">
-									<img 
-										src={message.imageUrl} 
-										alt="Doraemon" 
-										class="w-16 h-16 object-contain"
-									/>
-								</div>
-							{/if}
-							<p class="text-sm">{message.text}</p>
-							<p class="text-xs mt-1 opacity-70">
-								{formatTime(message.timestamp)}
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		{/each}
-		
-		<!-- Loading indicator -->
-		{#if isLoading}
-			<div class="flex justify-start">
-				<div class="max-w-xs lg:max-w-md">
-					<div class="flex items-end space-x-2">
-						<div class="w-8 h-8 rounded-full bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center flex-shrink-0">
-							<svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-							</svg>
-						</div>
-						<div class="px-4 py-2 rounded-2xl bg-slate-700">
-							<div class="flex space-x-1">
-								<div class="w-2 h-2 bg-slate-400 rounded-full animate-bounce"></div>
-								<div class="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style="animation-delay: 0.1s"></div>
-								<div class="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		{/if}
-	</div>
-
-	<!-- Input Area -->
-	<div class="border-t border-slate-700 p-4">
-		<div class="flex space-x-4">
-			<div class="flex-1 relative">
-				<textarea
-					bind:value={inputMessage}
-					on:keypress={handleKeyPress}
-					placeholder="Type your message here..."
-					disabled={isLoading}
-					class="w-full px-4 py-3 bg-slate-800 border border-slate-600 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none disabled:opacity-50 disabled:cursor-not-allowed"
-					rows="1"
-					style="min-height: 48px; max-height: 120px;"
-				></textarea>
-			</div>
-			<button
-				on:click={sendMessage}
-				disabled={!inputMessage.trim() || isLoading}
-				class="px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-xl hover:from-blue-700 hover:to-cyan-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-900 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 transform hover:scale-105"
-			>
-				{#if isLoading}
-					<svg class="w-5 h-5 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-					</svg>
-				{:else}
-					<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-					</svg>
-				{/if}
-			</button>
-		</div>
-		<p class="text-xs text-slate-500 mt-2 text-center">
-			Press Enter to send, Shift+Enter for new line
-		</p>
-	</div>
-</main>
->>>>>>> 4ab6d2b01e60bcee7535a1a381e212be16fa1049
 
 <style>
 	:global(body) {
@@ -507,7 +323,6 @@
 		overflow: hidden;
 	}
 	
-<<<<<<< HEAD
 	.sidebar {
 		background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
 		position: relative;
@@ -530,9 +345,5 @@
 	.sidebar > * {
 		position: relative;
 		z-index: 1;
-=======
-	main {
-		height: calc(100vh - 80px);
->>>>>>> 4ab6d2b01e60bcee7535a1a381e212be16fa1049
 	}
 </style>
