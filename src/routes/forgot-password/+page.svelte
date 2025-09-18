@@ -83,8 +83,13 @@
 			</div>
 
 			{#if error}
+<<<<<<< HEAD
 				<div class="mb-6 p-4 bg-sky-50 dark:bg-sky-900/20 border border-sky-200 dark:border-sky-800 rounded-lg">
 					<p class="text-sky-600 dark:text-sky-400 text-sm">{error}</p>
+=======
+				<div class="mb-6 p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
+					<p class="text-red-600 dark:text-red-400 text-sm">{error}</p>
+>>>>>>> 4ab6d2b01e60bcee7535a1a381e212be16fa1049
 				</div>
 			{/if}
 

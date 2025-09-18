@@ -13,6 +13,7 @@
 
 	const teamMembers = [
 		{
+<<<<<<< HEAD
 			name: 'Muhammad Ahmed',
 			role: 'Full Stack Developer',
 			description: 'Lead developer and architect behind ShieldAuth, passionate about building secure and scalable authentication solutions',
@@ -29,6 +30,24 @@
 			role: 'Security Specialist',
 			description: 'Cybersecurity expert ensuring our platform meets the highest security standards and compliance requirements',
 			image: '/images/team/sofia.jpg'
+=======
+			name: 'Alex Johnson',
+			role: 'Founder & CEO',
+			description: 'Security expert with 10+ years in authentication systems',
+			image: '/images/team/alex.jpg'
+		},
+		{
+			name: 'Sarah Chen',
+			role: 'Lead Developer',
+			description: 'Full-stack developer passionate about secure applications',
+			image: '/images/team/sarah.jpg'
+		},
+		{
+			name: 'Mike Rodriguez',
+			role: 'Security Architect',
+			description: 'Cybersecurity specialist focused on enterprise solutions',
+			image: '/images/team/mike.jpg'
+>>>>>>> 4ab6d2b01e60bcee7535a1a381e212be16fa1049
 		}
 	];
 
@@ -47,11 +66,19 @@
 
 <!-- Hero Section -->
 <section class="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-20">
+<<<<<<< HEAD
 	<div class="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-transparent to-red-500/5"></div>
 	<div class="relative max-w-6xl mx-auto px-4 text-center">
 		<div class="space-y-6">
 			<h1 class="text-4xl md:text-5xl font-bold text-white">
 				About <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">ShieldAuth</span>
+=======
+	<div class="absolute inset-0 bg-gradient-to-r from-red-500/5 via-transparent to-red-500/5"></div>
+	<div class="relative max-w-6xl mx-auto px-4 text-center">
+		<div class="space-y-6">
+			<h1 class="text-4xl md:text-5xl font-bold text-white">
+				About <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-red-600">ShieldAuth</span>
+>>>>>>> 4ab6d2b01e60bcee7535a1a381e212be16fa1049
 			</h1>
 			<p class="text-xl text-slate-300 max-w-2xl mx-auto">
 				We're building the future of secure authentication with cutting-edge technology and unwavering commitment to user safety.
@@ -71,7 +98,11 @@
 						onclick={() => activeTab = tab.id}
 						class="flex items-center space-x-2 px-6 py-3 rounded-xl font-medium transition-all duration-200 {
 							activeTab === tab.id 
+<<<<<<< HEAD
 								? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg shadow-blue-500/25' 
+=======
+								? 'bg-gradient-to-r from-red-600 to-red-700 text-white shadow-lg shadow-red-500/25' 
+>>>>>>> 4ab6d2b01e60bcee7535a1a381e212be16fa1049
 								: 'text-slate-400 hover:text-white hover:bg-slate-700/50'
 						}"
 					>
@@ -88,7 +119,11 @@
 				<div class="grid lg:grid-cols-2 gap-12 items-center">
 					<div class="space-y-6">
 						<h2 class="text-3xl font-bold text-white">
+<<<<<<< HEAD
 							Our <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">Mission</span>
+=======
+							Our <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-red-600">Mission</span>
+>>>>>>> 4ab6d2b01e60bcee7535a1a381e212be16fa1049
 						</h2>
 						<p class="text-lg text-slate-300 leading-relaxed">
 							At ShieldAuth, we believe that security shouldn't be complicated. Our mission is to provide 
@@ -96,8 +131,13 @@
 						</p>
 						<div class="space-y-4">
 							<div class="flex items-start space-x-4">
+<<<<<<< HEAD
 								<div class="w-8 h-8 bg-gradient-to-br from-blue-500/20 to-blue-600/30 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
 									<svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+=======
+								<div class="w-8 h-8 bg-gradient-to-br from-red-500/20 to-red-600/30 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+									<svg class="w-4 h-4 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+>>>>>>> 4ab6d2b01e60bcee7535a1a381e212be16fa1049
 										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
 									</svg>
 								</div>
@@ -107,8 +147,13 @@
 								</div>
 							</div>
 							<div class="flex items-start space-x-4">
+<<<<<<< HEAD
 								<div class="w-8 h-8 bg-gradient-to-br from-blue-500/20 to-blue-600/30 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
 									<svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+=======
+								<div class="w-8 h-8 bg-gradient-to-br from-red-500/20 to-red-600/30 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+									<svg class="w-4 h-4 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+>>>>>>> 4ab6d2b01e60bcee7535a1a381e212be16fa1049
 										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
 									</svg>
 								</div>
@@ -118,8 +163,13 @@
 								</div>
 							</div>
 							<div class="flex items-start space-x-4">
+<<<<<<< HEAD
 								<div class="w-8 h-8 bg-gradient-to-br from-blue-500/20 to-blue-600/30 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
 									<svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+=======
+								<div class="w-8 h-8 bg-gradient-to-br from-red-500/20 to-red-600/30 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+									<svg class="w-4 h-4 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+>>>>>>> 4ab6d2b01e60bcee7535a1a381e212be16fa1049
 										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
 									</svg>
 								</div>
@@ -130,11 +180,19 @@
 							</div>
 						</div>
 					</div>
+<<<<<<< HEAD
 					<div class="group relative bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 hover:border-blue-500/30 shadow-xl hover:shadow-2xl hover:shadow-blue-500/10 transform hover:-translate-y-1 transition-all duration-500">
 						<div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 						<div class="relative z-10 text-center">
 							<div class="w-24 h-24 bg-gradient-to-br from-blue-500/20 to-blue-600/30 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
 								<svg class="w-12 h-12 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+=======
+					<div class="group relative bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 hover:border-red-500/30 shadow-xl hover:shadow-2xl hover:shadow-red-500/10 transform hover:-translate-y-1 transition-all duration-500">
+						<div class="absolute inset-0 bg-gradient-to-br from-red-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+						<div class="relative z-10 text-center">
+							<div class="w-24 h-24 bg-gradient-to-br from-red-500/20 to-red-600/30 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+								<svg class="w-12 h-12 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+>>>>>>> 4ab6d2b01e60bcee7535a1a381e212be16fa1049
 									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
 								</svg>
 							</div>
@@ -149,7 +207,11 @@
 				<div class="space-y-8">
 					<div class="text-center">
 						<h2 class="text-3xl font-bold text-white mb-4">
+<<<<<<< HEAD
 							Meet Our <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">Team</span>
+=======
+							Meet Our <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-red-600">Team</span>
+>>>>>>> 4ab6d2b01e60bcee7535a1a381e212be16fa1049
 						</h2>
 						<p class="text-lg text-slate-300 max-w-2xl mx-auto">
 							We're a passionate team of security experts, developers, and designers working together to build the future of authentication.
@@ -157,6 +219,7 @@
 					</div>
 					<div class="grid md:grid-cols-3 gap-8">
 						{#each teamMembers as member}
+<<<<<<< HEAD
 							<div class="group relative bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-sm rounded-2xl p-6 border border-slate-700 hover:border-blue-500/30 shadow-xl hover:shadow-2xl hover:shadow-blue-500/10 transform hover:-translate-y-2 transition-all duration-500">
 								<div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 								<div class="relative z-10 text-center">
@@ -165,6 +228,16 @@
 									</div>
 									<h3 class="text-xl font-bold text-white mb-2 group-hover:text-blue-300 transition-colors duration-300">{member.name}</h3>
 									<p class="text-blue-400 font-semibold mb-3">{member.role}</p>
+=======
+							<div class="group relative bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-sm rounded-2xl p-6 border border-slate-700 hover:border-red-500/30 shadow-xl hover:shadow-2xl hover:shadow-red-500/10 transform hover:-translate-y-2 transition-all duration-500">
+								<div class="absolute inset-0 bg-gradient-to-br from-red-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+								<div class="relative z-10 text-center">
+									<div class="w-20 h-20 bg-gradient-to-br from-red-500/20 to-red-600/30 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+										<span class="text-2xl">👤</span>
+									</div>
+									<h3 class="text-xl font-bold text-white mb-2 group-hover:text-red-300 transition-colors duration-300">{member.name}</h3>
+									<p class="text-red-400 font-semibold mb-3">{member.role}</p>
+>>>>>>> 4ab6d2b01e60bcee7535a1a381e212be16fa1049
 									<p class="text-slate-400 text-sm leading-relaxed">{member.description}</p>
 								</div>
 							</div>
@@ -177,6 +250,7 @@
 				<div class="grid lg:grid-cols-2 gap-12">
 					<div class="space-y-8">
 						<h2 class="text-3xl font-bold text-white">
+<<<<<<< HEAD
 							Our <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">Values</span>
 						</h2>
 						<div class="space-y-6">
@@ -198,11 +272,35 @@
 								<div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 								<div class="relative z-10">
 									<h3 class="text-xl font-bold text-white mb-3 group-hover:text-blue-300 transition-colors duration-300">Transparency</h3>
+=======
+							Our <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-red-600">Values</span>
+						</h2>
+						<div class="space-y-6">
+							<div class="group relative bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-sm rounded-2xl p-6 border border-slate-700 hover:border-red-500/30 shadow-xl hover:shadow-2xl hover:shadow-red-500/10 transform hover:-translate-y-1 transition-all duration-500">
+								<div class="absolute inset-0 bg-gradient-to-br from-red-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+								<div class="relative z-10">
+									<h3 class="text-xl font-bold text-white mb-3 group-hover:text-red-300 transition-colors duration-300">Security First</h3>
+									<p class="text-slate-400">We prioritize security in every decision, ensuring our users' data is always protected.</p>
+								</div>
+							</div>
+							<div class="group relative bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-sm rounded-2xl p-6 border border-slate-700 hover:border-red-500/30 shadow-xl hover:shadow-2xl hover:shadow-red-500/10 transform hover:-translate-y-1 transition-all duration-500">
+								<div class="absolute inset-0 bg-gradient-to-br from-red-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+								<div class="relative z-10">
+									<h3 class="text-xl font-bold text-white mb-3 group-hover:text-red-300 transition-colors duration-300">Innovation</h3>
+									<p class="text-slate-400">We continuously push the boundaries of what's possible in authentication technology.</p>
+								</div>
+							</div>
+							<div class="group relative bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-sm rounded-2xl p-6 border border-slate-700 hover:border-red-500/30 shadow-xl hover:shadow-2xl hover:shadow-red-500/10 transform hover:-translate-y-1 transition-all duration-500">
+								<div class="absolute inset-0 bg-gradient-to-br from-red-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+								<div class="relative z-10">
+									<h3 class="text-xl font-bold text-white mb-3 group-hover:text-red-300 transition-colors duration-300">Transparency</h3>
+>>>>>>> 4ab6d2b01e60bcee7535a1a381e212be16fa1049
 									<p class="text-slate-400">We believe in open communication and honest relationships with our users and partners.</p>
 								</div>
 							</div>
 						</div>
 					</div>
+<<<<<<< HEAD
 					<div class="group relative bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 hover:border-blue-500/30 shadow-xl hover:shadow-2xl hover:shadow-blue-500/10 transform hover:-translate-y-1 transition-all duration-500">
 						<div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 						<div class="relative z-10">
@@ -226,6 +324,31 @@
 								</div>
 								<div class="flex items-center space-x-3">
 									<div class="w-2 h-2 bg-blue-400 rounded-full"></div>
+=======
+					<div class="group relative bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 hover:border-red-500/30 shadow-xl hover:shadow-2xl hover:shadow-red-500/10 transform hover:-translate-y-1 transition-all duration-500">
+						<div class="absolute inset-0 bg-gradient-to-br from-red-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+						<div class="relative z-10">
+							<h3 class="text-2xl font-bold text-white mb-6 group-hover:text-red-300 transition-colors duration-300">Our Commitment</h3>
+							<div class="space-y-4">
+								<div class="flex items-center space-x-3">
+									<div class="w-2 h-2 bg-red-400 rounded-full"></div>
+									<span class="text-slate-300">99.9% uptime guarantee</span>
+								</div>
+								<div class="flex items-center space-x-3">
+									<div class="w-2 h-2 bg-red-400 rounded-full"></div>
+									<span class="text-slate-300">24/7 security monitoring</span>
+								</div>
+								<div class="flex items-center space-x-3">
+									<div class="w-2 h-2 bg-red-400 rounded-full"></div>
+									<span class="text-slate-300">Regular security audits</span>
+								</div>
+								<div class="flex items-center space-x-3">
+									<div class="w-2 h-2 bg-red-400 rounded-full"></div>
+									<span class="text-slate-300">GDPR compliance</span>
+								</div>
+								<div class="flex items-center space-x-3">
+									<div class="w-2 h-2 bg-red-400 rounded-full"></div>
+>>>>>>> 4ab6d2b01e60bcee7535a1a381e212be16fa1049
 									<span class="text-slate-300">SOC 2 Type II certified</span>
 								</div>
 							</div>
@@ -238,11 +361,16 @@
 				<div class="max-w-4xl mx-auto">
 					<div class="text-center mb-12">
 						<h2 class="text-3xl font-bold text-white mb-4">
+<<<<<<< HEAD
 							Our <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">Story</span>
+=======
+							Our <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-red-600">Story</span>
+>>>>>>> 4ab6d2b01e60bcee7535a1a381e212be16fa1049
 						</h2>
 						<p class="text-lg text-slate-300">From a simple idea to a global authentication platform</p>
 					</div>
 					<div class="space-y-8">
+<<<<<<< HEAD
 						<div class="group relative bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 hover:border-blue-500/30 shadow-xl hover:shadow-2xl hover:shadow-blue-500/10 transform hover:-translate-y-1 transition-all duration-500">
 							<div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 							<div class="relative z-10">
@@ -252,11 +380,23 @@
 									</div>
 									<div>
 										<h3 class="text-xl font-bold text-white mb-2 group-hover:text-blue-300 transition-colors duration-300">2020 - The Beginning</h3>
+=======
+						<div class="group relative bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 hover:border-red-500/30 shadow-xl hover:shadow-2xl hover:shadow-red-500/10 transform hover:-translate-y-1 transition-all duration-500">
+							<div class="absolute inset-0 bg-gradient-to-br from-red-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+							<div class="relative z-10">
+								<div class="flex items-start space-x-4">
+									<div class="w-12 h-12 bg-gradient-to-br from-red-500/20 to-red-600/30 rounded-xl flex items-center justify-center flex-shrink-0">
+										<span class="text-xl">🚀</span>
+									</div>
+									<div>
+										<h3 class="text-xl font-bold text-white mb-2 group-hover:text-red-300 transition-colors duration-300">2020 - The Beginning</h3>
+>>>>>>> 4ab6d2b01e60bcee7535a1a381e212be16fa1049
 										<p class="text-slate-400">ShieldAuth was founded with a simple mission: make authentication secure, simple, and accessible to everyone.</p>
 									</div>
 								</div>
 							</div>
 						</div>
+<<<<<<< HEAD
 						<div class="group relative bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 hover:border-blue-500/30 shadow-xl hover:shadow-2xl hover:shadow-blue-500/10 transform hover:-translate-y-1 transition-all duration-500">
 							<div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 							<div class="relative z-10">
@@ -266,11 +406,23 @@
 									</div>
 									<div>
 										<h3 class="text-xl font-bold text-white mb-2 group-hover:text-blue-300 transition-colors duration-300">2021 - First Breakthrough</h3>
+=======
+						<div class="group relative bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 hover:border-red-500/30 shadow-xl hover:shadow-2xl hover:shadow-red-500/10 transform hover:-translate-y-1 transition-all duration-500">
+							<div class="absolute inset-0 bg-gradient-to-br from-red-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+							<div class="relative z-10">
+								<div class="flex items-start space-x-4">
+									<div class="w-12 h-12 bg-gradient-to-br from-red-500/20 to-red-600/30 rounded-xl flex items-center justify-center flex-shrink-0">
+										<span class="text-xl">💡</span>
+									</div>
+									<div>
+										<h3 class="text-xl font-bold text-white mb-2 group-hover:text-red-300 transition-colors duration-300">2021 - First Breakthrough</h3>
+>>>>>>> 4ab6d2b01e60bcee7535a1a381e212be16fa1049
 										<p class="text-slate-400">We launched our first public beta and gained our first 1,000 users, proving that developers needed a better authentication solution.</p>
 									</div>
 								</div>
 							</div>
 						</div>
+<<<<<<< HEAD
 						<div class="group relative bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 hover:border-blue-500/30 shadow-xl hover:shadow-2xl hover:shadow-blue-500/10 transform hover:-translate-y-1 transition-all duration-500">
 							<div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 							<div class="relative z-10">
@@ -280,6 +432,17 @@
 									</div>
 									<div>
 										<h3 class="text-xl font-bold text-white mb-2 group-hover:text-blue-300 transition-colors duration-300">2023 - Global Expansion</h3>
+=======
+						<div class="group relative bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 hover:border-red-500/30 shadow-xl hover:shadow-2xl hover:shadow-red-500/10 transform hover:-translate-y-1 transition-all duration-500">
+							<div class="absolute inset-0 bg-gradient-to-br from-red-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+							<div class="relative z-10">
+								<div class="flex items-start space-x-4">
+									<div class="w-12 h-12 bg-gradient-to-br from-red-500/20 to-red-600/30 rounded-xl flex items-center justify-center flex-shrink-0">
+										<span class="text-xl">🌟</span>
+									</div>
+									<div>
+										<h3 class="text-xl font-bold text-white mb-2 group-hover:text-red-300 transition-colors duration-300">2023 - Global Expansion</h3>
+>>>>>>> 4ab6d2b01e60bcee7535a1a381e212be16fa1049
 										<p class="text-slate-400">Today, ShieldAuth serves over 10,000 developers worldwide and continues to innovate in the authentication space.</p>
 									</div>
 								</div>

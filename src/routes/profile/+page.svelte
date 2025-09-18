@@ -109,7 +109,11 @@
 						<button
 							type="button"
 							onclick={handleImageDelete}
+<<<<<<< HEAD
 							class="absolute -top-2 -right-2 w-6 h-6 bg-sky-500 hover:bg-sky-600 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2"
+=======
+							class="absolute -top-2 -right-2 w-6 h-6 bg-red-500 hover:bg-red-600 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+>>>>>>> 4ab6d2b01e60bcee7535a1a381e212be16fa1049
 							title="Delete profile picture"
 						>
 							<svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -224,15 +228,26 @@
 
 			<!-- Error Message -->
 			{#if $page.form?.error}
+<<<<<<< HEAD
 				<div class="bg-sky-50 dark:bg-sky-900/20 border border-sky-200 dark:border-sky-800 rounded-lg p-4">
 					<div class="flex">
 						<div class="flex-shrink-0">
 							<svg class="h-5 w-5 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+=======
+				<div class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4">
+					<div class="flex">
+						<div class="flex-shrink-0">
+							<svg class="h-5 w-5 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+>>>>>>> 4ab6d2b01e60bcee7535a1a381e212be16fa1049
 								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 							</svg>
 						</div>
 						<div class="ml-3">
+<<<<<<< HEAD
 							<p class="text-sm text-sky-800 dark:text-sky-200">{$page.form.error}</p>
+=======
+							<p class="text-sm text-red-800 dark:text-red-200">{$page.form.error}</p>
+>>>>>>> 4ab6d2b01e60bcee7535a1a381e212be16fa1049
 						</div>
 					</div>
 				</div>
@@ -323,7 +338,11 @@
 		<form method="POST" action="/logout" class="inline">
 			<button
 				type="submit"
+<<<<<<< HEAD
 				class="px-6 py-3 border border-transparent text-sm font-medium rounded-lg text-white bg-gradient-to-r from-sky-600 to-sky-700 hover:from-sky-700 hover:to-sky-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 transition-all duration-200"
+=======
+				class="px-6 py-3 border border-transparent text-sm font-medium rounded-lg text-white bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-all duration-200"
+>>>>>>> 4ab6d2b01e60bcee7535a1a381e212be16fa1049
 			>
 				Sign Out
 			</button>

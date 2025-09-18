@@ -77,7 +77,11 @@
 			{#if $page.data.user}
 				<div class="space-y-4">
 					<p class="text-lg text-white drop-shadow-lg">
+<<<<<<< HEAD
 						Welcome back, <span class="font-semibold text-sky-400">{$page.data.user.name || $page.data.user.email}</span>!
+=======
+						Welcome back, <span class="font-semibold text-red-400">{$page.data.user.name || $page.data.user.email}</span>!
+>>>>>>> 4ab6d2b01e60bcee7535a1a381e212be16fa1049
 					</p>
 					<div class="flex flex-col sm:flex-row gap-4 justify-center">
 						<a
@@ -88,7 +92,11 @@
 						</a>
 						<a
 							href="/profile"
+<<<<<<< HEAD
 								class="inline-flex justify-center items-center px-8 py-4 border border-slate-300 rounded-lg shadow-sm text-base font-semibold text-white bg-transparent hover:border-sky-500 hover:text-sky-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-600 transition-all duration-200"
+=======
+								class="inline-flex justify-center items-center px-8 py-4 border border-slate-300 rounded-lg shadow-sm text-base font-semibold text-white bg-transparent hover:border-red-500 hover:text-red-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-600 transition-all duration-200"
+>>>>>>> 4ab6d2b01e60bcee7535a1a381e212be16fa1049
 						>
 							View Profile
 						</a>
@@ -108,7 +116,11 @@
 						</a>
                         <a
                             href="/login"
+<<<<<<< HEAD
                             class="inline-flex justify-center items-center px-8 py-4 border border-slate-300 rounded-lg shadow-sm text-base font-semibold text-white bg-transparent hover:border-sky-500 hover:text-sky-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-600 transition-all duration-200"
+=======
+                            class="inline-flex justify-center items-center px-8 py-4 border border-slate-300 rounded-lg shadow-sm text-base font-semibold text-white bg-transparent hover:border-red-500 hover:text-red-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-600 transition-all duration-200"
+>>>>>>> 4ab6d2b01e60bcee7535a1a381e212be16fa1049
                         >
                             Sign In
                         </a>

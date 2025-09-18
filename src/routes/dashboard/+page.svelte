@@ -168,7 +168,11 @@
 			<div class="space-y-4">
 				<div class="flex items-center justify-between">
 					<span class="text-slate-400">Two-Factor Authentication</span>
+<<<<<<< HEAD
 					<span class="text-sky-400 text-sm font-medium">Not enabled</span>
+=======
+					<span class="text-red-400 text-sm font-medium">Not enabled</span>
+>>>>>>> 4ab6d2b01e60bcee7535a1a381e212be16fa1049
 				</div>
 				<div class="flex items-center justify-between">
 					<span class="text-slate-400">Email Verification</span>
