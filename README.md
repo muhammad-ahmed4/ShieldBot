@@ -9,6 +9,7 @@ A comprehensive, production-ready authentication application built with cutting-
 - **Styling**: TailwindCSS with custom dark theme
 - **Database**: PostgreSQL with Drizzle ORM
 - **Security**: CSRF protection, bcrypt hashing, secure sessions
+- **AI Integration**: ShieldBot AI Chatbot with modern interface
 - **Deployment**: Docker-ready with comprehensive configuration
 
 ## ✨ Core Features
@@ -72,7 +73,7 @@ A comprehensive, production-ready authentication application built with cutting-
 
 - **Hero Section** - Engaging landing page with feature showcase
 - **Feature Cards** - Interactive cards highlighting system capabilities
-- **ShieldBot Integration** - AI chatbot card (currently disabled but UI ready)
+- **ShieldBot AI Chatbot** - Complete AI chatbot interface with modern dark theme
 - **Call-to-Action** - Beautiful gradient buttons for user engagement
 - **Professional Footer** - Complete site navigation and social links
 
@@ -97,6 +98,16 @@ A comprehensive, production-ready authentication application built with cutting-
 - **User Management** - Advanced search, filtering, and user control
 - **Role Administration** - User role management and permissions
 - **System Monitoring** - Real-time system health and activity
+
+#### **ShieldBot AI Chatbot**
+
+- **Modern Chat Interface** - Beautiful dark theme with red accents
+- **Real-time Messaging** - Instant message display with typing indicators
+- **Model Selection** - Multiple AI model options (Gemini 1.5 Flash, Pro)
+- **Chat History** - Persistent conversation history with sidebar navigation
+- **Responsive Design** - Perfect display on all devices and screen sizes
+- **User Profile Integration** - Seamless integration with user authentication
+- **Clean Interface** - No navbar distraction for focused chat experience
 
 ## 🔧 Environment Configuration
 
@@ -146,6 +157,16 @@ src/
 │   ├── api/                 # API endpoints
 │   ├── admin/               # Admin-only pages
 │   ├── auth/                # Authentication pages
+│   ├── chatbot/             # ShieldBot AI Chatbot interface
+│   │   ├── components/      # Chatbot-specific components
+│   │   │   ├── ChatMessage.svelte
+│   │   │   ├── ChatInput.svelte
+│   │   │   ├── ChatHeader.svelte
+│   │   │   ├── Sidebar.svelte
+│   │   │   └── TypingIndicator.svelte
+│   │   ├── +page.svelte     # Main chatbot interface
+│   │   ├── +page.server.ts  # Server-side authentication
+│   │   └── +layout.svelte   # Chatbot layout
 │   └── (pages)/             # Public and protected pages
 └── static/                  # Static assets
 ```
@@ -241,6 +262,7 @@ npm run promote-admin your-email@example.com
 - `/dashboard` - User dashboard with profile overview
 - `/profile` - Profile management with picture upload
 - `/change-password` - Secure password change
+- `/chatbot` - ShieldBot AI Chatbot interface
 
 ### **Admin Routes**
 
@@ -252,6 +274,7 @@ npm run promote-admin your-email@example.com
 - `/api/auth/*` - Authentication endpoints
 - `/api/profile/*` - Profile management
 - `/api/admin/users/*` - Admin user management
+- `/api/chatbot/*` - AI chatbot endpoints (future implementation)
 
 ## 🛠️ Development Scripts
 
@@ -302,6 +325,15 @@ npm run promote-admin <email>  # Promote user to admin role
 2. **Animations** → Slide-up text animations and smooth transitions
 3. **Responsive** → Perfect display on all devices
 4. **Accessibility** → ARIA labels and keyboard navigation
+
+### **ShieldBot AI Chatbot Features**
+
+1. **Chat Interface** → Real-time messaging with typing indicators
+2. **Model Selection** → Multiple AI model options for different use cases
+3. **Chat History** → Persistent conversation management with sidebar
+4. **User Integration** → Seamless authentication and profile integration
+5. **Modern Design** → Dark theme with red accents matching ShieldAuth branding
+6. **Responsive Layout** → Full-screen chat experience without navbar distractions
 
 ## 🔒 Security Implementation
 
