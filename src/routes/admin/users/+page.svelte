@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
-	import { onMount } from 'svelte';
 
 	// Redirect if not admin
 	$: if (!$page.data.user || $page.data.user.role !== 'admin') {
@@ -27,41 +26,47 @@
 		});
 	}
 
-	// Apply filters
+	// ✅ Search input (just update state, no auto refresh)
+	function handleSearchInput(e: Event) {
+		searchTerm = (e.target as HTMLInputElement).value;
+	}
+
+	// ✅ Enter key → apply immediately
+	function handleSearchKeydown(e: KeyboardEvent) {
+		if (e.key === 'Enter') {
+			applyFilters();
+		}
+	}
+
+	// ✅ Apply filters with page refresh
 	function applyFilters() {
 		const params = new URLSearchParams();
 		if (searchTerm) params.set('search', searchTerm);
 		if (selectedRole) params.set('role', selectedRole);
-		
+
 		const queryString = params.toString();
-		goto(`/admin/users${queryString ? `?${queryString}` : ''}`);
+		window.location.href = `/admin/users${queryString ? `?${queryString}` : ''}`;
 	}
 
-	// Clear filters
+	// ✅ Clear filters with page refresh
 	function clearFilters() {
 		searchTerm = '';
 		selectedRole = '';
-		goto('/admin/users');
+		window.location.href = '/admin/users';
 	}
 
 	// Delete user account
 	async function deleteUser(userId: string, userName: string) {
 		const confirmed = confirm(`Are you sure you want to permanently delete the account for "${userName}"? This action cannot be undone and will remove all user data including sessions, OAuth accounts, and verification tokens.`);
-		
-		if (!confirmed) {
-			return;
-		}
+		if (!confirmed) return;
 
 		try {
 			const response = await fetch(`/api/admin/users/${userId}/delete`, {
 				method: 'DELETE',
-				headers: {
-					'Content-Type': 'application/json',
-				},
+				headers: { 'Content-Type': 'application/json' },
 			});
 
 			if (response.ok) {
-				// Refresh the page to show updated data
 				window.location.reload();
 			} else {
 				const error = await response.json();
@@ -78,14 +83,11 @@
 		try {
 			const response = await fetch(`/api/admin/users/${userId}/change-role`, {
 				method: 'PUT',
-				headers: {
-					'Content-Type': 'application/json',
-				},
+				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify({ role: newRole }),
 			});
 
 			if (response.ok) {
-				// Refresh the page to show updated data
 				window.location.reload();
 			} else {
 				const error = await response.json();
@@ -105,6 +107,10 @@
 
 <div class="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+	<!-- Spacer -->
+	<div class="h-10"></div>
+	<div class="h-10"></div>
+	
 	<!-- Header -->
     <div class="mb-8">
         <div class="relative bg-gradient-to-br from-gray-800/90 via-gray-900/80 to-gray-800/90 rounded-2xl shadow-2xl border border-gray-700/50 p-8 overflow-hidden">
@@ -117,9 +123,13 @@
 				<div class="flex items-center space-x-4">
 					<a
 						href="/admin"
-                        class="px-4 py-2 border border-gray-600 rounded-xl text-sm font-semibold text-gray-300 bg-gray-800/50 hover:bg-gray-800 hover:border-gray-500 hover:text-white transition-colors"
+						on:click={() => { if ($page.url.pathname === '/admin') { window.location.reload(); } }}
+                        class="group relative px-4 py-2 border border-gray-600 rounded-xl text-sm font-semibold text-gray-300 bg-gray-800/50 hover:bg-gray-700 hover:border-gray-400 hover:text-white transition-all duration-200 transform hover:scale-105"
 					>
-						← Back to Admin Dashboard
+						<svg class="w-4 h-4 inline-block mr-2 group-hover:-translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+						</svg>
+						Back to Admin Dashboard
 					</a>
 				</div>
 			</div>
@@ -159,8 +169,11 @@
 					id="search"
 					type="text"
 					bind:value={searchTerm}
+					on:input={handleSearchInput}
+					on:keydown={handleSearchKeydown}
 					placeholder="Search by name or email..."
-                    class="w-full px-3 py-2 border border-gray-600 rounded-xl shadow-sm placeholder-gray-400 bg-gray-800/50 text-white focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm"
+                    class="w-full px-3 py-2 border border-gray-600 rounded-xl shadow-sm placeholder-gray-400 bg-gray-800/50 text-white focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm transition-all duration-200"
+					autocomplete="off"
 				/>
 			</div>
 
@@ -170,7 +183,7 @@
 				<select
 					id="role"
 					bind:value={selectedRole}
-                    class="w-full px-3 py-2 border border-gray-600 rounded-xl shadow-sm bg-gray-800/50 text-white focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm"
+					class="w-full px-3 py-2 border border-gray-600 rounded-xl shadow-sm bg-gray-800/50 text-white focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm transition-all duration-200"
 				>
 					<option value="">All Roles</option>
 					<option value="user">User</option>
@@ -182,14 +195,20 @@
             <div class="flex items-end space-x-2">
 				<button
 					on:click={applyFilters}
-                    class="px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-semibold rounded-xl transition-colors"
+                    class="group px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-semibold rounded-xl transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-indigo-500/25"
 				>
+					<svg class="w-4 h-4 inline-block mr-2 group-hover:rotate-12 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+					</svg>
 					Apply Filters
 				</button>
 				<button
 					on:click={clearFilters}
-                    class="px-4 py-2 border border-gray-600 text-gray-300 hover:bg-gray-800 font-semibold rounded-xl transition-colors"
+                    class="group px-4 py-2 border border-gray-600 text-gray-300 hover:bg-gray-800 hover:border-gray-500 hover:text-white font-semibold rounded-xl transition-all duration-200 transform hover:scale-105"
 				>
+					<svg class="w-4 h-4 inline-block mr-2 group-hover:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+					</svg>
 					Clear
 				</button>
 			</div>
@@ -266,8 +285,11 @@
 
 		{#if users.length === 0}
 			<div class="text-center py-8">
-				<p class="text-slate-400">No users found matching your criteria.</p>
+				<p class="text-slate-400">
+					{searchTerm || selectedRole ? 'No users found matching your criteria.' : 'No users found.'}
+				</p>
 			</div>
 		{/if}
 	</div>
+</div>
 </div>

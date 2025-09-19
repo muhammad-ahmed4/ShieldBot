@@ -1,3 +1,4 @@
+// +page.server.ts
 import type { PageServerLoad } from "./$types";
 import { redirect } from "@sveltejs/kit";
 import { db } from "$lib/server/db.js";
@@ -5,12 +6,11 @@ import { users } from "$lib/server/db/schema.js";
 import { desc, eq, like, or, and, count } from "drizzle-orm";
 
 export const load: PageServerLoad = async ({ locals, url }) => {
-  // Check if user is authenticated and is admin
-  if (!locals.user) {
+  // Check authentication & role
+  if (!locals.auth?.user) {
     throw redirect(302, "/login");
   }
-
-  if (locals.user.role !== "admin") {
+  if (locals.auth.user.role !== "admin") {
     throw redirect(302, "/");
   }
 
@@ -18,20 +18,21 @@ export const load: PageServerLoad = async ({ locals, url }) => {
     const search = url.searchParams.get("search") || "";
     const role = url.searchParams.get("role") || "";
 
-    // Build query conditions
-    let conditions = [];
-
+    // Build conditions
+    const conditions = [];
     if (search) {
       conditions.push(
-        or(like(users.name, `%${search}%`), like(users.email, `%${search}%`))
+        or(
+          like(users.name, `%${search}%`),
+          like(users.email, `%${search}%`)
+        )
       );
     }
-
     if (role) {
       conditions.push(eq(users.role, role));
     }
 
-    // Get all users with filters
+    // Query users with filters
     const allUsers = await db
       .select({
         id: users.id,
@@ -46,7 +47,7 @@ export const load: PageServerLoad = async ({ locals, url }) => {
       .where(conditions.length > 0 ? and(...conditions) : undefined)
       .orderBy(desc(users.createdAt));
 
-    // Get user counts by role
+    // Role counts
     const userCounts = await db
       .select({
         role: users.role,
@@ -56,7 +57,7 @@ export const load: PageServerLoad = async ({ locals, url }) => {
       .groupBy(users.role);
 
     return {
-      user: locals.user,
+      user: locals.auth.user,
       users: allUsers,
       userCounts,
       filters: { search, role },

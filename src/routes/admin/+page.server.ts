@@ -6,11 +6,11 @@ import { count, desc, eq, gte, sql } from "drizzle-orm";
 
 export const load: PageServerLoad = async ({ locals }) => {
   // Check if user is authenticated and is admin
-  if (!locals.user) {
+  if (!locals.auth?.user) {
     throw redirect(302, "/login");
   }
 
-  if (locals.user.role !== "admin") {
+  if (locals.auth.user.role !== "admin") {
     throw redirect(302, "/");
   }
 
@@ -47,7 +47,7 @@ export const load: PageServerLoad = async ({ locals }) => {
       .where(gte(users.createdAt, thirtyDaysAgo));
 
     return {
-      user: locals.user,
+      user: locals.auth.user,
       stats: {
         totalUsers: totalUsers[0].count,
         adminUsers: adminUsers[0].count,

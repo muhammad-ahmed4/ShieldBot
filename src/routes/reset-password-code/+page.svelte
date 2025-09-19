@@ -182,6 +182,16 @@
 					</div>
 				{/if}
 
+				<!-- Code Alert -->
+				<div class="mb-6 p-4 bg-blue-500/10 border border-blue-500/30 rounded-xl">
+					<div class="flex items-center gap-3">
+						<svg class="w-5 h-5 text-blue-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+						</svg>
+						<span class="text-blue-300 text-sm font-medium">Don't Receive Code Yet! Check Spam Section As well</span>
+					</div>
+				</div>
+
 				<!-- Verification Form -->
 				<form method="POST" use:enhance={handleSubmit} class="space-y-6">
 					<input type="hidden" name="email" value={email} />
