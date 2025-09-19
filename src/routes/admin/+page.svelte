@@ -57,7 +57,11 @@
 	<meta name="description" content="Administrative dashboard for user management" />
 </svelte:head>
 
+<div class="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+	<!-- Spacer for transparent navbar -->
+	<div class="h-10"></div>
+	<div class="h-10"></div>
 	<!-- Header -->
 	<div class="mb-8">
 		<div class="bg-slate-800 rounded-xl shadow-sm border border-slate-700 p-6">
@@ -196,4 +200,5 @@
 			</table>
 		</div>
 	</div>
+</div>
 </div>

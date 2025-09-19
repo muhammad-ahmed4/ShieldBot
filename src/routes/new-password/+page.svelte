@@ -70,74 +70,84 @@
 	<meta name="description" content="Set your new password" />
 </svelte:head>
 
-<div class="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center p-4">
+<div class="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 flex items-center justify-center p-4">
 	<div class="w-full max-w-md">
-		<Card padding="lg">
-			<div class="text-center mb-8">
-				<h1 class="text-3xl font-bold text-slate-900 dark:text-white mb-2">
-					New Password
-				</h1>
-				<p class="text-slate-600 dark:text-slate-400">
-					Enter your new password for <strong>{email}</strong>
-				</p>
+		<div class="group relative bg-gradient-to-br from-gray-800/90 via-gray-900/80 to-gray-800/90 backdrop-blur-sm rounded-2xl shadow-2xl border border-gray-700/50 p-8 hover:border-emerald-500/50 transition-all duration-300 overflow-hidden">
+			<!-- Background texture overlay -->
+			<div class="absolute inset-0 bg-gradient-to-r from-emerald-500/5 via-indigo-500/5 to-blue-500/5"></div>
+			<div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-emerald-500/10 to-transparent rounded-full blur-3xl"></div>
+			<div class="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-indigo-500/10 to-transparent rounded-full blur-2xl"></div>
+			<div class="relative z-10">
+				<div class="text-center mb-8">
+					<h1 class="text-3xl font-bold text-white mb-2">
+						New Password
+					</h1>
+					<p class="text-gray-300">
+						Enter your new password for <strong class="text-emerald-400">{email}</strong>
+					</p>
+				</div>
+
+				{#if error}
+					<div class="mb-6 p-4 bg-blue-500/10 border border-blue-500/30 rounded-xl">
+						<p class="text-blue-300 text-sm">{error}</p>
+					</div>
+				{/if}
+
+				{#if success}
+					<div class="mb-6 p-4 bg-emerald-500/10 border border-emerald-500/30 rounded-xl">
+						<p class="text-emerald-300 text-sm">{success}</p>
+					</div>
+				{/if}
+
+				<form method="POST" use:enhance={handleSubmit} class="space-y-6">
+					<input type="hidden" name="email" value={email} />
+					<input type="hidden" name="code" value={code} />
+					<input type="hidden" name="password" value={password} />
+					<input type="hidden" name="confirmPassword" value={confirmPassword} />
+					
+					<div>
+						<label for="password" class="block text-sm font-semibold text-gray-300 mb-2">New Password</label>
+						<input
+							type="password"
+							id="password"
+							bind:value={password}
+							placeholder="Enter your new password"
+							required
+							disabled={isLoading}
+							class="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500/50 transition-all duration-200 disabled:opacity-50"
+						/>
+					</div>
+
+					<div>
+						<label for="confirmPassword" class="block text-sm font-semibold text-gray-300 mb-2">Confirm New Password</label>
+						<input
+							type="password"
+							id="confirmPassword"
+							bind:value={confirmPassword}
+							placeholder="Confirm your new password"
+							required
+							disabled={isLoading}
+							class="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500/50 transition-all duration-200 disabled:opacity-50"
+						/>
+					</div>
+
+					<button
+						type="submit"
+						disabled={isLoading || !!error}
+						class="w-full px-6 py-3 bg-gradient-to-r from-emerald-600 to-indigo-600 hover:from-emerald-500 hover:to-indigo-500 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl hover:shadow-emerald-500/25 transform hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+					>
+						{isLoading ? 'Changing Password...' : 'Change Password'}
+					</button>
+				</form>
+
+				<div class="mt-6 text-center">
+					<p class="text-sm text-gray-400">
+						<a href="/" class="text-blue-400 hover:text-blue-300 hover:underline transition-colors">
+							← Back to Home
+						</a>
+					</p>
+				</div>
 			</div>
-
-			{#if error}
-				<div class="mb-6 p-4 bg-sky-50 dark:bg-sky-900/20 border border-sky-200 dark:border-sky-800 rounded-lg">
-					<p class="text-sky-600 dark:text-sky-400 text-sm">{error}</p>
-				</div>
-			{/if}
-
-			{#if success}
-				<div class="mb-6 p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg">
-					<p class="text-green-600 dark:text-green-400 text-sm">{success}</p>
-				</div>
-			{/if}
-
-			<form method="POST" use:enhance={handleSubmit} class="space-y-6">
-				<input type="hidden" name="email" value={email} />
-				<input type="hidden" name="code" value={code} />
-				<input type="hidden" name="password" value={password} />
-				<input type="hidden" name="confirmPassword" value={confirmPassword} />
-				
-				<div>
-					<Input
-						type="password"
-						label="New Password"
-						bind:value={password}
-						placeholder="Enter your new password"
-						required
-						disabled={isLoading}
-					/>
-				</div>
-
-				<div>
-					<Input
-						type="password"
-						label="Confirm New Password"
-						bind:value={confirmPassword}
-						placeholder="Confirm your new password"
-						required
-						disabled={isLoading}
-					/>
-				</div>
-
-				<Button
-					type="submit"
-					fullWidth={true}
-					disabled={isLoading || !!error}
-				>
-					{isLoading ? 'Changing Password...' : 'Change Password'}
-				</Button>
-			</form>
-
-			<div class="mt-6 text-center">
-				<p class="text-sm text-slate-600 dark:text-slate-400">
-					<a href="/" class="text-blue-600 dark:text-blue-400 hover:underline">
-						← Back to Home
-					</a>
-				</p>
-			</div>
-		</Card>
+		</div>
 	</div>
 </div>

@@ -103,41 +103,44 @@
 	<meta name="description" content="Manage all users in the system" />
 </svelte:head>
 
+<div class="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 	<!-- Header -->
-	<div class="mb-8">
-		<div class="bg-slate-800 rounded-xl shadow-sm border border-slate-700 p-6">
+    <div class="mb-8">
+        <div class="relative bg-gradient-to-br from-gray-800/90 via-gray-900/80 to-gray-800/90 rounded-2xl shadow-2xl border border-gray-700/50 p-8 overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-indigo-500/5"></div>
 			<div class="flex items-center justify-between">
 				<div>
 					<h1 class="text-3xl font-bold text-white">User Management</h1>
-					<p class="text-slate-400 mt-1">Manage all registered users in the system</p>
+                    <p class="text-gray-400 mt-1">Manage all registered users in the system</p>
 				</div>
 				<div class="flex items-center space-x-4">
 					<a
 						href="/admin"
-						class="px-4 py-2 border border-slate-600 rounded-lg text-sm font-medium text-slate-300 bg-slate-800 hover:bg-slate-700 transition-colors"
+                        class="px-4 py-2 border border-gray-600 rounded-xl text-sm font-semibold text-gray-300 bg-gray-800/50 hover:bg-gray-800 hover:border-gray-500 hover:text-white transition-colors"
 					>
 						← Back to Admin Dashboard
 					</a>
 				</div>
 			</div>
-		</div>
+        </div>
 	</div>
 
 	<!-- User Statistics -->
-	<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
 		{#each userCounts as count}
-			<div class="bg-slate-800 rounded-xl shadow-sm border border-slate-700 p-6">
+            <div class="group relative bg-gradient-to-br from-gray-800/90 via-gray-900/80 to-gray-800/90 rounded-2xl shadow-xl border border-gray-700/50 p-6 hover:border-blue-500/50 transition-all duration-300 overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-transparent to-indigo-500/5"></div>
 				<div class="flex items-center">
 					<div class="flex-shrink-0">
-						<div class="w-8 h-8 {count.role === 'admin' ? 'bg-purple-900/30' : 'bg-blue-900/30'} rounded-lg flex items-center justify-center">
-							<svg class="w-5 h-5 {count.role === 'admin' ? 'text-purple-400' : 'text-blue-400'}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="w-12 h-12 {count.role === 'admin' ? 'bg-purple-500/20' : 'bg-blue-500/20'} rounded-xl flex items-center justify-center border {count.role === 'admin' ? 'border-purple-500/30' : 'border-blue-500/30'}">
+                            <svg class="w-6 h-6 {count.role === 'admin' ? 'text-purple-400' : 'text-blue-400'}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
 							</svg>
 						</div>
 					</div>
 					<div class="ml-4">
-						<p class="text-sm font-medium text-slate-400">{count.role === 'admin' ? 'Admin' : 'Regular'} Users</p>
+                        <p class="text-sm font-medium text-gray-400">{count.role === 'admin' ? 'Admin' : 'Regular'} Users</p>
 						<p class="text-2xl font-semibold text-white">{count.count}</p>
 					</div>
 				</div>
@@ -146,28 +149,28 @@
 	</div>
 
 	<!-- Filters -->
-	<div class="bg-slate-800 rounded-xl shadow-sm border border-slate-700 p-6 mb-8">
+    <div class="bg-gradient-to-br from-gray-800/90 via-gray-900/80 to-gray-800/90 rounded-2xl shadow-xl border border-gray-700/50 p-6 mb-8">
 		<h2 class="text-lg font-semibold text-white mb-4">Filters</h2>
 		<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
 			<!-- Search -->
 			<div>
-				<label for="search" class="block text-sm font-medium text-slate-300 mb-2">Search</label>
+                <label for="search" class="block text-sm font-semibold text-gray-300 mb-2">Search</label>
 				<input
 					id="search"
 					type="text"
 					bind:value={searchTerm}
 					placeholder="Search by name or email..."
-					class="w-full px-3 py-2 border border-slate-600 rounded-md shadow-sm placeholder-slate-400 bg-slate-700 text-white focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-sm"
+                    class="w-full px-3 py-2 border border-gray-600 rounded-xl shadow-sm placeholder-gray-400 bg-gray-800/50 text-white focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm"
 				/>
 			</div>
 
 			<!-- Role Filter -->
 			<div>
-				<label for="role" class="block text-sm font-medium text-slate-300 mb-2">Role</label>
+                <label for="role" class="block text-sm font-semibold text-gray-300 mb-2">Role</label>
 				<select
 					id="role"
 					bind:value={selectedRole}
-					class="w-full px-3 py-2 border border-slate-600 rounded-md shadow-sm bg-slate-700 text-white focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-sm"
+                    class="w-full px-3 py-2 border border-gray-600 rounded-xl shadow-sm bg-gray-800/50 text-white focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm"
 				>
 					<option value="">All Roles</option>
 					<option value="user">User</option>
@@ -176,16 +179,16 @@
 			</div>
 
 			<!-- Filter Actions -->
-			<div class="flex items-end space-x-2">
+            <div class="flex items-end space-x-2">
 				<button
 					on:click={applyFilters}
-					class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors"
+                    class="px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-semibold rounded-xl transition-colors"
 				>
 					Apply Filters
 				</button>
 				<button
 					on:click={clearFilters}
-					class="px-4 py-2 border border-slate-600 text-slate-300 hover:bg-slate-700 font-medium rounded-lg transition-colors"
+                    class="px-4 py-2 border border-gray-600 text-gray-300 hover:bg-gray-800 font-semibold rounded-xl transition-colors"
 				>
 					Clear
 				</button>
@@ -194,23 +197,23 @@
 	</div>
 
 	<!-- Users Table -->
-	<div class="bg-slate-800 rounded-xl shadow-sm border border-slate-700 p-6">
+    <div class="bg-gradient-to-br from-gray-800/90 via-gray-900/80 to-gray-800/90 rounded-2xl shadow-xl border border-gray-700/50 p-6">
 		<div class="flex items-center justify-between mb-6">
 			<h2 class="text-xl font-semibold text-white">All Users ({users.length})</h2>
 		</div>
 
 		<div class="overflow-x-auto">
-			<table class="min-w-full divide-y divide-slate-700">
+            <table class="min-w-full divide-y divide-gray-700">
 				<thead>
 					<tr>
-						<th class="px-6 py-3 text-left text-xs font-medium text-slate-400 uppercase tracking-wider">User</th>
-						<th class="px-6 py-3 text-left text-xs font-medium text-slate-400 uppercase tracking-wider">Role</th>
-						<th class="px-6 py-3 text-left text-xs font-medium text-slate-400 uppercase tracking-wider">Joined</th>
-						<th class="px-6 py-3 text-left text-xs font-medium text-slate-400 uppercase tracking-wider">Last Updated</th>
-						<th class="px-6 py-3 text-left text-xs font-medium text-slate-400 uppercase tracking-wider">Actions</th>
+                        <th class="px-6 py-3 text-left text-xs font-semibold text-gray-400 uppercase tracking-wider">User</th>
+                        <th class="px-6 py-3 text-left text-xs font-semibold text-gray-400 uppercase tracking-wider">Role</th>
+                        <th class="px-6 py-3 text-left text-xs font-semibold text-gray-400 uppercase tracking-wider">Joined</th>
+                        <th class="px-6 py-3 text-left text-xs font-semibold text-gray-400 uppercase tracking-wider">Last Updated</th>
+                        <th class="px-6 py-3 text-left text-xs font-semibold text-gray-400 uppercase tracking-wider">Actions</th>
 					</tr>
 				</thead>
-				<tbody class="divide-y divide-slate-700">
+                <tbody class="divide-y divide-gray-700">
 					{#each users as user}
 						<tr class="hover:bg-slate-700/50 transition-colors">
 							<td class="px-6 py-4 whitespace-nowrap">
@@ -224,7 +227,7 @@
 										<div class="text-sm font-medium text-white">
 											{user.name || 'No name'}
 										</div>
-										<div class="text-sm text-slate-400">{user.email}</div>
+                                <div class="text-sm text-gray-400">{user.email}</div>
 									</div>
 								</div>
 							</td>
@@ -232,17 +235,17 @@
 								<select
 									value={user.role}
 									on:change={(e) => changeUserRole(user.id, (e.target as HTMLSelectElement)?.value || 'user')}
-									class="text-xs font-semibold rounded-full px-2 py-1 border-0 {user.role === 'admin' ? 'bg-purple-900/30 text-purple-400' : 'bg-slate-600 text-slate-300'}"
+                                    class="text-xs font-semibold rounded-full px-2 py-1 border-0 {user.role === 'admin' ? 'bg-purple-900/30 text-purple-400' : 'bg-gray-700 text-gray-300'}"
 									disabled={user.id === $page.data.user.id}
 								>
 									<option value="user">User</option>
 									<option value="admin">Admin</option>
 								</select>
 							</td>
-							<td class="px-6 py-4 whitespace-nowrap text-sm text-slate-400">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-400">
 								{formatDate(user.createdAt)}
 							</td>
-							<td class="px-6 py-4 whitespace-nowrap text-sm text-slate-400">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-400">
 								{formatDate(user.updatedAt)}
 							</td>
 							<td class="px-6 py-4 whitespace-nowrap text-sm font-medium">

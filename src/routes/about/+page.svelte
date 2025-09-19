@@ -3,6 +3,7 @@
 	import { onMount } from 'svelte';
 
 	let activeTab = $state('mission');
+	let isVisible = $state(false);
 
 	const tabs = [
 		{ id: 'mission', label: 'Our Mission', icon: '🎯' },
@@ -37,6 +38,11 @@
 		if (typeof document !== 'undefined') {
 			document.documentElement.classList.add('dark');
 		}
+		
+		// Trigger animation after component mounts
+		setTimeout(() => {
+			isVisible = true;
+		}, 100);
 	});
 </script>
 
@@ -46,14 +52,14 @@
 </svelte:head>
 
 <!-- Hero Section -->
-<section class="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-20">
-	<div class="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-transparent to-red-500/5"></div>
+<section class="relative bg-gradient-to-br from-gray-900 via-black to-gray-900 pt-28 pb-24">
+	<div class="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-indigo-500/5"></div>
 	<div class="relative max-w-6xl mx-auto px-4 text-center">
 		<div class="space-y-6">
-			<h1 class="text-4xl md:text-5xl font-bold text-white">
+			<h1 class="text-4xl md:text-5xl font-bold text-white transition-all duration-1000 ease-out {isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}">
 				About <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">ShieldAuth</span>
 			</h1>
-			<p class="text-xl text-slate-300 max-w-2xl mx-auto">
+			<p class="text-xl text-gray-300 max-w-2xl mx-auto transition-all duration-1000 ease-out delay-200 {isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}">
 				We're building the future of secure authentication with cutting-edge technology and unwavering commitment to user safety.
 			</p>
 		</div>
@@ -61,18 +67,18 @@
 </section>
 
 <!-- Main Content -->
-<main class="bg-slate-900 py-16">
+<main class="bg-gradient-to-b from-black via-gray-900 to-black py-16">
 	<div class="max-w-6xl mx-auto px-4">
 		<!-- Tab Navigation -->
 		<div class="mb-12">
-			<div class="flex flex-wrap justify-center gap-2 p-2 bg-slate-800/50 rounded-2xl border border-slate-700">
+			<div class="flex flex-wrap justify-center gap-2 p-2 bg-gray-800/50 rounded-2xl border border-gray-700 backdrop-blur-sm">
 				{#each tabs as tab}
 					<button
 						onclick={() => activeTab = tab.id}
-						class="flex items-center space-x-2 px-6 py-3 rounded-xl font-medium transition-all duration-200 {
+						class="flex items-center space-x-2 px-6 py-3 rounded-xl font-semibold transition-all duration-200 {
 						activeTab === tab.id 
-							? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg shadow-blue-500/25' 
-								: 'text-slate-400 hover:text-white hover:bg-slate-700/50'
+							? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-500/25' 
+								: 'text-gray-400 hover:text-white hover:bg-gray-700/50'
 						}"
 					>
 						<span class="text-lg">{tab.icon}</span>
@@ -90,47 +96,47 @@
 						<h2 class="text-3xl font-bold text-white">
 							Our <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">Mission</span>
 						</h2>
-						<p class="text-lg text-slate-300 leading-relaxed">
+						<p class="text-lg text-gray-300 leading-relaxed">
 							At ShieldAuth, we believe that security shouldn't be complicated. Our mission is to provide 
 							enterprise-grade authentication solutions that are both powerful and easy to use.
 						</p>
 						<div class="space-y-4">
 							<div class="flex items-start space-x-4">
-								<div class="w-8 h-8 bg-gradient-to-br from-blue-500/20 to-blue-600/30 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-									<svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<div class="w-10 h-10 bg-gradient-to-br from-blue-500/20 to-indigo-600/30 rounded-xl flex items-center justify-center flex-shrink-0 mt-1 border border-blue-500/30">
+									<svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
 									</svg>
 								</div>
 								<div>
 									<h3 class="text-white font-semibold mb-1">Secure by Design</h3>
-									<p class="text-slate-400">Every feature is built with security as the foundation</p>
+									<p class="text-gray-400">Every feature is built with security as the foundation</p>
 								</div>
 							</div>
 							<div class="flex items-start space-x-4">
-								<div class="w-8 h-8 bg-gradient-to-br from-blue-500/20 to-blue-600/30 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-									<svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<div class="w-10 h-10 bg-gradient-to-br from-purple-500/20 to-indigo-600/30 rounded-xl flex items-center justify-center flex-shrink-0 mt-1 border border-purple-500/30">
+									<svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
 									</svg>
 								</div>
 								<div>
 									<h3 class="text-white font-semibold mb-1">Lightning Fast</h3>
-									<p class="text-slate-400">Optimized for speed without compromising security</p>
+									<p class="text-gray-400">Optimized for speed without compromising security</p>
 								</div>
 							</div>
 							<div class="flex items-start space-x-4">
-								<div class="w-8 h-8 bg-gradient-to-br from-blue-500/20 to-blue-600/30 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-									<svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<div class="w-10 h-10 bg-gradient-to-br from-emerald-500/20 to-indigo-600/30 rounded-xl flex items-center justify-center flex-shrink-0 mt-1 border border-emerald-500/30">
+									<svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
 									</svg>
 								</div>
 								<div>
 									<h3 class="text-white font-semibold mb-1">User-Centric</h3>
-									<p class="text-slate-400">Designed with the end user experience in mind</p>
+									<p class="text-gray-400">Designed with the end user experience in mind</p>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="group relative bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 hover:border-blue-500/30 shadow-xl hover:shadow-2xl hover:shadow-blue-500/10 transform hover:-translate-y-1 transition-all duration-500">
+					<div class="group relative bg-gradient-to-br from-gray-800/90 to-gray-900/90 backdrop-blur-sm rounded-2xl p-8 border border-gray-700 hover:border-blue-500/30 shadow-xl hover:shadow-2xl hover:shadow-blue-500/10 transform hover:-translate-y-1 transition-all duration-500">
 						<div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 						<div class="relative z-10 text-center">
 							<div class="w-24 h-24 bg-gradient-to-br from-blue-500/20 to-blue-600/30 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
@@ -149,23 +155,23 @@
 				<div class="space-y-8">
 					<div class="text-center">
 						<h2 class="text-3xl font-bold text-white mb-4">
-							Meet Our <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">Team</span>
+							Meet Our <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Team</span>
 						</h2>
-						<p class="text-lg text-slate-300 max-w-2xl mx-auto">
+						<p class="text-lg text-gray-300 max-w-2xl mx-auto">
 							We're a passionate team of security experts, developers, and designers working together to build the future of authentication.
 						</p>
 					</div>
 					<div class="grid md:grid-cols-3 gap-8">
 						{#each teamMembers as member}
-							<div class="group relative bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-sm rounded-2xl p-6 border border-slate-700 hover:border-blue-500/30 shadow-xl hover:shadow-2xl hover:shadow-blue-500/10 transform hover:-translate-y-2 transition-all duration-500">
+							<div class="group relative bg-gradient-to-br from-gray-800/90 to-gray-900/90 backdrop-blur-sm rounded-2xl p-6 border border-gray-700 hover:border-blue-500/30 shadow-xl hover:shadow-2xl hover:shadow-blue-500/10 transform hover:-translate-y-2 transition-all duration-500">
 								<div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 								<div class="relative z-10 text-center">
-									<div class="w-20 h-20 bg-gradient-to-br from-blue-500/20 to-blue-600/30 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+									<div class="w-20 h-20 bg-gradient-to-br from-blue-500/20 to-indigo-600/30 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 border border-blue-500/30">
 										<span class="text-2xl">👤</span>
 									</div>
 									<h3 class="text-xl font-bold text-white mb-2 group-hover:text-blue-300 transition-colors duration-300">{member.name}</h3>
 									<p class="text-blue-400 font-semibold mb-3">{member.role}</p>
-									<p class="text-slate-400 text-sm leading-relaxed">{member.description}</p>
+									<p class="text-gray-400 text-sm leading-relaxed">{member.description}</p>
 								</div>
 							</div>
 						{/each}
