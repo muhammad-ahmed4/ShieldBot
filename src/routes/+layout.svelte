@@ -73,7 +73,7 @@
 
 <div class="min-h-screen bg-black">
 	<!-- Navigation - Hidden on auth pages -->
-	{#if !$page.url.pathname.startsWith('/auth') && $page.url.pathname !== '/login' && $page.url.pathname !== '/register' && !$page.url.pathname.startsWith('/checks') && $page.url.pathname !== '/forgot-password' && $page.url.pathname !== '/reset-password' && $page.url.pathname !== '/reset-password-code' && $page.url.pathname !== '/verify-code' && $page.url.pathname !== '/new-password' && $page.url.pathname !== '/change-password' && $page.url.pathname !== '/change-password-code'}
+	{#if !$page.url.pathname.startsWith('/auth') && $page.url.pathname !== '/login' && $page.url.pathname !== '/register' && !$page.url.pathname.startsWith('/checks') && $page.url.pathname !== '/forgot-password' && $page.url.pathname !== '/reset-password' && $page.url.pathname !== '/reset-password-code' && $page.url.pathname !== '/verify-code' && $page.url.pathname !== '/new-password' && $page.url.pathname !== '/change-password' && $page.url.pathname !== '/change-password-code' && $page.url.pathname !== '/chatbot'}
 	<nav class="absolute inset-x-0 top-0 z-30 bg-transparent border-transparent">
 		<div class="w-full px-4 sm:px-6 lg:px-8">
 			<div class="flex justify-between items-center h-16 w-full">
@@ -155,6 +155,19 @@
 										</svg>
 										Profile
 										{#if $page.url.pathname !== '/profile'}
+											<span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-200 group-hover:w-full"></span>
+										{/if}
+									</a>
+									<a
+										href="/chatbot"
+										on:click={() => { if ($page.url.pathname === '/chatbot') { window.location.reload(); } }}
+								class="flex items-center px-6 py-3 text-sm transition-all duration-200 relative group {($page.url.pathname === '/chatbot') ? 'text-gray-500 cursor-default opacity-50' : 'text-gray-300 hover:bg-white/5 hover:text-blue-400'}"
+									>
+										<svg class="w-4 h-4 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+										</svg>
+										ShieldBot
+										{#if $page.url.pathname !== '/chatbot'}
 											<span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-200 group-hover:w-full"></span>
 										{/if}
 									</a>
