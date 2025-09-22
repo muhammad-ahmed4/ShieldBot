@@ -117,7 +117,18 @@
 								aria-label="User menu"
 							>
 								{#if $page.data.user.image}
-									<img src={$page.data.user.image} alt="Profile" class="w-6 h-6 rounded-full" />
+									<img 
+										src={$page.data.user.image} 
+										alt="Profile" 
+										class="w-6 h-6 rounded-full object-cover"
+										on:error={(e) => {
+											e.target.style.display = 'none';
+											e.target.nextElementSibling.style.display = 'flex';
+										}}
+									/>
+									<div class="w-6 h-6 rounded-full flex items-center justify-center text-white text-xs font-medium {($page.url.pathname === '/') ? 'bg-white/30' : 'bg-blue-500'}" style="display: none;">
+										{$page.data.user.email?.charAt(0).toUpperCase()}
+									</div>
 								{:else}
 								<div class="w-6 h-6 rounded-full flex items-center justify-center text-white text-xs font-medium {($page.url.pathname === '/') ? 'bg-white/30' : 'bg-blue-500'}">
 										{$page.data.user.email?.charAt(0).toUpperCase()}

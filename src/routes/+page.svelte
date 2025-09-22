@@ -159,19 +159,19 @@
 				</div>
 			</div>
 
-			<div class="group relative bg-gradient-to-r from-purple-900/40 via-purple-800/30 to-purple-700/40 backdrop-blur-sm rounded-2xl p-6 border border-purple-500/30 hover:border-purple-400/50 shadow-2xl hover:shadow-3xl hover:shadow-purple-500/25 transform hover:-translate-y-2 transition-all duration-500 cursor-pointer overflow-hidden">
+			<div class="group relative bg-gradient-to-r from-indigo-900/40 via-indigo-800/30 to-indigo-700/40 backdrop-blur-sm rounded-2xl p-6 border border-indigo-500/30 hover:border-indigo-400/50 shadow-2xl hover:shadow-3xl hover:shadow-indigo-500/25 transform hover:-translate-y-2 transition-all duration-500 cursor-pointer overflow-hidden">
 				<!-- Animated background effects -->
-				<div class="absolute inset-0 bg-gradient-to-r from-purple-500/5 via-purple-400/5 to-purple-300/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-				<div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-400/10 to-transparent rounded-full blur-xl"></div>
-				<div class="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-purple-300/10 to-transparent rounded-full blur-lg"></div>
+				<div class="absolute inset-0 bg-gradient-to-r from-indigo-500/5 via-indigo-400/5 to-indigo-300/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+				<div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-indigo-400/10 to-transparent rounded-full blur-xl"></div>
+				<div class="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-indigo-300/10 to-transparent rounded-full blur-lg"></div>
 				
 				<div class="relative z-10">
-					<div class="w-14 h-14 bg-gradient-to-br from-purple-500/20 to-purple-600/30 group-hover:from-purple-400/30 group-hover:to-purple-500/40 rounded-2xl flex items-center justify-center mx-auto mb-4 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 shadow-lg group-hover:shadow-purple-500/30">
-						<svg class="w-7 h-7 text-purple-300 group-hover:text-purple-200 transition-all duration-300 group-hover:drop-shadow-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<div class="w-14 h-14 bg-gradient-to-br from-indigo-500/20 to-indigo-600/30 group-hover:from-indigo-400/30 group-hover:to-indigo-500/40 rounded-2xl flex items-center justify-center mx-auto mb-4 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 shadow-lg group-hover:shadow-indigo-500/30">
+						<svg class="w-7 h-7 text-indigo-300 group-hover:text-indigo-200 transition-all duration-300 group-hover:drop-shadow-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
 						</svg>
 					</div>
-					<h3 class="text-xl font-bold text-white mb-3 group-hover:text-purple-200 transition-colors duration-300 group-hover:drop-shadow-sm">Modern Technology</h3>
+					<h3 class="text-xl font-bold text-white mb-3 group-hover:text-indigo-200 transition-colors duration-300 group-hover:drop-shadow-sm">Modern Technology</h3>
 					<p class="text-slate-300 group-hover:text-slate-100 transition-colors duration-300 leading-relaxed">Built with SvelteKit 5, TypeScript, and PostgreSQL for reliability</p>
 				</div>
 			</div>

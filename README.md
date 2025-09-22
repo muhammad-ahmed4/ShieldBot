@@ -196,8 +196,8 @@ src/
 ### 1. **Clone and Install**
 
 ```bash
-git clone <repository-url>
-cd ShieldAuth
+git clone https://github.com/muhammad-ahmed4/ShieldBot-Assignment2-Ahmed-Asghar
+cd ShieldBot-Assignment2-Ahmed-Asghar
 npm install
 ```
 
