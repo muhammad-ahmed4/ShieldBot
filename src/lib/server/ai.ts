@@ -172,6 +172,7 @@ Always respond as ShieldBot, maintaining your friendly and helpful personality. 
       });
 
       for await (const chunk of stream.textStream) {
+        console.log("Vercel AI SDK chunk:", chunk); // Debug logging
         yield chunk;
       }
     } catch (error) {

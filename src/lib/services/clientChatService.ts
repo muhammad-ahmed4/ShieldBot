@@ -109,15 +109,23 @@ export class ClientChatService {
           if (done) break;
 
           const chunk = decoder.decode(value, { stream: true });
+          console.log("Received chunk:", chunk); // Debug logging
+          
           const lines = chunk.split("\n");
 
           for (const line of lines) {
             if (line.trim()) {
               try {
                 const data = JSON.parse(line);
+                console.log("Parsed streaming data:", data); // Debug logging
                 yield data;
+                
+                // Add a small delay to make streaming more visible
+                if (data.type === "chunk") {
+                  await new Promise(resolve => setTimeout(resolve, 10));
+                }
               } catch (parseError) {
-                console.error("Error parsing streaming data:", parseError);
+                console.error("Error parsing streaming data:", parseError, "Line:", line);
               }
             }
           }

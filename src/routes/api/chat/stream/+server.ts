@@ -89,6 +89,8 @@ export const POST: RequestHandler = async ({ request, locals }) => {
           );
 
           for await (const chunk of responseStream) {
+            console.log("AI Service chunk:", chunk); // Debug logging
+            
             const data =
               JSON.stringify({
                 type: "chunk",
@@ -96,7 +98,11 @@ export const POST: RequestHandler = async ({ request, locals }) => {
                 timestamp: new Date().toISOString(),
               }) + "\n";
 
+            console.log("Sending chunk data:", data); // Debug logging
             controller.enqueue(new TextEncoder().encode(data));
+            
+            // Force flush the chunk immediately
+            await new Promise(resolve => setTimeout(resolve, 0));
           }
 
           // Send completion signal
@@ -126,9 +132,12 @@ export const POST: RequestHandler = async ({ request, locals }) => {
     return new Response(stream, {
       headers: {
         "Content-Type": "text/plain; charset=utf-8",
-        "Cache-Control": "no-cache",
-        Connection: "keep-alive",
+        "Cache-Control": "no-cache, no-store, must-revalidate",
+        "Pragma": "no-cache",
+        "Expires": "0",
+        "Connection": "keep-alive",
         "Transfer-Encoding": "chunked",
+        "X-Accel-Buffering": "no", // Disable nginx buffering
       },
     });
   } catch (error) {
