@@ -107,14 +107,14 @@
 					timestamp: msg.timestamp
 				}));
 
-			// Use streaming response with letter-by-letter streaming
+			// Use streaming response with word-by-word streaming
 			let accumulatedContent = '';
 			for await (const chunk of clientChatService.sendStreamingMessage(text, conversationHistory, selectedModel)) {
 				if (chunk.type === 'chunk' && chunk.content) {
-					// Each chunk now contains a single character
+					// Each chunk now contains a word or whitespace
 					accumulatedContent += chunk.content;
 					
-					// Update the AI message content with the new character
+					// Update the AI message content with the new word
 					const messageIndex = messages.findIndex(m => m.id === aiMessage.id);
 					if (messageIndex !== -1) {
 						messages[messageIndex] = {

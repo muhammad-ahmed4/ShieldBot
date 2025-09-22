@@ -119,20 +119,29 @@ export class ClientChatService {
               try {
                 const data = JSON.parse(line);
                 console.log("Parsed streaming data:", data); // Debug logging
-                
+
                 if (data.type === "chunk" && data.content) {
-                  // Accumulate content and stream letter by letter
+                  // Accumulate content and stream word by word
                   accumulatedContent += data.content;
+
+                  // Split new content into words and stream each word
+                  const newWords = data.content.split(/(\s+)/); // Split on whitespace but keep separators
                   
-                  // Stream each character with a delay
-                  for (let i = accumulatedContent.length - data.content.length; i < accumulatedContent.length; i++) {
-                    yield {
-                      type: "chunk",
-                      content: accumulatedContent[i]
-                    };
-                    
-                    // Add delay between characters (adjust speed here)
-                    await new Promise((resolve) => setTimeout(resolve, 20));
+                  for (const word of newWords) {
+                    if (word.trim()) { // Only stream non-empty words
+                      yield {
+                        type: "chunk",
+                        content: word,
+                      };
+
+                      // Add delay between words (adjust speed here)
+                      await new Promise((resolve) => setTimeout(resolve, 100));
+                    } else if (word) { // Stream whitespace immediately
+                      yield {
+                        type: "chunk",
+                        content: word,
+                      };
+                    }
                   }
                 } else if (data.type === "complete") {
                   // Send completion signal
