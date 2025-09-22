@@ -126,9 +126,10 @@ export class ClientChatService {
 
                   // Split new content into words and stream each word
                   const newWords = data.content.split(/(\s+)/); // Split on whitespace but keep separators
-                  
+
                   for (const word of newWords) {
-                    if (word.trim()) { // Only stream non-empty words
+                    if (word.trim()) {
+                      // Only stream non-empty words
                       yield {
                         type: "chunk",
                         content: word,
@@ -136,7 +137,8 @@ export class ClientChatService {
 
                       // Add delay between words (adjust speed here)
                       await new Promise((resolve) => setTimeout(resolve, 100));
-                    } else if (word) { // Stream whitespace immediately
+                    } else if (word) {
+                      // Stream whitespace immediately
                       yield {
                         type: "chunk",
                         content: word,
