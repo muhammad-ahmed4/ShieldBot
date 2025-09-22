@@ -73,7 +73,7 @@
 
 <div class="min-h-screen bg-black">
 	<!-- Navigation - Hidden on auth pages -->
-	{#if !$page.url.pathname.startsWith('/auth') && $page.url.pathname !== '/login' && $page.url.pathname !== '/register' && !$page.url.pathname.startsWith('/checks') && $page.url.pathname !== '/forgot-password' && $page.url.pathname !== '/reset-password' && $page.url.pathname !== '/reset-password-code' && $page.url.pathname !== '/verify-code' && $page.url.pathname !== '/new-password' && $page.url.pathname !== '/change-password' && $page.url.pathname !== '/change-password-code'}
+	{#if !$page.url.pathname.startsWith('/auth') && $page.url.pathname !== '/login' && $page.url.pathname !== '/register' && !$page.url.pathname.startsWith('/checks') && $page.url.pathname !== '/forgot-password' && $page.url.pathname !== '/reset-password' && $page.url.pathname !== '/reset-password-code' && $page.url.pathname !== '/verify-code' && $page.url.pathname !== '/new-password' && $page.url.pathname !== '/change-password' && $page.url.pathname !== '/change-password-code' && $page.url.pathname !== '/chatbot'}
 	<nav class="absolute inset-x-0 top-0 z-30 bg-transparent border-transparent">
 		<div class="w-full px-4 sm:px-6 lg:px-8">
 			<div class="flex justify-between items-center h-16 w-full">
