@@ -60,7 +60,7 @@ export class ClientChatService {
   }
 
   /**
-   * Send a message and get a streaming response
+   * Send a message and get a streaming response with letter-by-letter streaming
    */
   async *sendStreamingMessage(
     message: string,
@@ -101,6 +101,7 @@ export class ClientChatService {
 
       const reader = response.body.getReader();
       const decoder = new TextDecoder();
+      let accumulatedContent = "";
 
       try {
         while (true) {
@@ -110,7 +111,7 @@ export class ClientChatService {
 
           const chunk = decoder.decode(value, { stream: true });
           console.log("Received chunk:", chunk); // Debug logging
-          
+
           const lines = chunk.split("\n");
 
           for (const line of lines) {
@@ -118,14 +119,34 @@ export class ClientChatService {
               try {
                 const data = JSON.parse(line);
                 console.log("Parsed streaming data:", data); // Debug logging
-                yield data;
                 
-                // Add a small delay to make streaming more visible
-                if (data.type === "chunk") {
-                  await new Promise(resolve => setTimeout(resolve, 10));
+                if (data.type === "chunk" && data.content) {
+                  // Accumulate content and stream letter by letter
+                  accumulatedContent += data.content;
+                  
+                  // Stream each character with a delay
+                  for (let i = accumulatedContent.length - data.content.length; i < accumulatedContent.length; i++) {
+                    yield {
+                      type: "chunk",
+                      content: accumulatedContent[i]
+                    };
+                    
+                    // Add delay between characters (adjust speed here)
+                    await new Promise((resolve) => setTimeout(resolve, 20));
+                  }
+                } else if (data.type === "complete") {
+                  // Send completion signal
+                  yield data;
+                } else if (data.type === "error") {
+                  yield data;
                 }
               } catch (parseError) {
-                console.error("Error parsing streaming data:", parseError, "Line:", line);
+                console.error(
+                  "Error parsing streaming data:",
+                  parseError,
+                  "Line:",
+                  line
+                );
               }
             }
           }
