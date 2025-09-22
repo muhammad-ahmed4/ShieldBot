@@ -230,64 +230,57 @@
 
 		<!-- ShieldBot AI Feature Card -->
 		<div class="mb-16">
-			<div class="group relative bg-gradient-to-r from-gray-900/80 via-black/70 to-gray-800/80 backdrop-blur-sm rounded-2xl p-8 border border-red-500/40 hover:border-red-400/60 shadow-2xl hover:shadow-3xl hover:shadow-red-500/30 transform hover:-translate-y-2 transition-all duration-500 overflow-hidden">
+			<div class="group relative bg-gradient-to-r from-purple-900/40 via-purple-800/30 to-purple-700/40 backdrop-blur-sm rounded-2xl p-8 border border-purple-500/30 hover:border-purple-400/50 shadow-2xl hover:shadow-3xl hover:shadow-purple-500/25 transform hover:-translate-y-2 transition-all duration-500 overflow-hidden">
 				<!-- Animated background effects -->
-				<div class="absolute inset-0 bg-gradient-to-r from-red-500/8 via-pink-500/6 to-rose-500/8 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-				<div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-red-400/15 to-transparent rounded-full blur-xl"></div>
-				<div class="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-pink-400/15 to-transparent rounded-full blur-lg"></div>
+				<div class="absolute inset-0 bg-gradient-to-r from-purple-500/5 via-purple-400/5 to-purple-300/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+				<div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-400/10 to-transparent rounded-full blur-xl"></div>
+				<div class="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-purple-300/10 to-transparent rounded-full blur-lg"></div>
 				
 				<!-- Centered content layout -->
 				<div class="relative z-10 text-center">
 					<!-- ShieldBot Icon -->
-					<div class="flex justify-center mb-4">
-						<div class="w-14 h-14 bg-gradient-to-br from-red-500/20 to-red-600/30 group-hover:from-red-400/30 group-hover:to-red-500/40 rounded-2xl flex items-center justify-center mx-auto mb-4 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 shadow-lg group-hover:shadow-red-500/30">
-							<svg class="w-7 h-7 text-red-300 group-hover:text-red-200 transition-all duration-300 group-hover:drop-shadow-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<!-- Shield with Robot Face -->
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 2L4 6V12C4 16.5 7.5 20.5 12 22C16.5 20.5 20 16.5 20 12V6L12 2Z" />
-								<!-- Robot Eyes -->
-								<circle cx="9" cy="10" r="1.8" fill="currentColor" />
-								<circle cx="15" cy="10" r="1.8" fill="currentColor" />
-								<!-- Robot Mouth -->
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 14H15" />
-								<!-- Shield Center Dot -->
-								<circle cx="12" cy="12" r="1.2" fill="currentColor" />
+					<div class="flex justify-center mb-3">
+						<div class="w-14 h-14 bg-gradient-to-br from-purple-500/20 to-purple-600/30 group-hover:from-purple-400/30 group-hover:to-purple-500/40 rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 shadow-lg group-hover:shadow-purple-500/30">
+							<svg class="w-7 h-7 text-purple-300 group-hover:text-purple-200 transition-all duration-300 group-hover:drop-shadow-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<!-- Square Message Icon -->
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/>
 							</svg>
 						</div>
 					</div>
 					
 					<!-- Heading -->
-					<h3 class="text-3xl font-bold text-white group-hover:text-red-300 transition-colors duration-300 mb-2">
+					<h3 class="text-3xl font-bold text-white group-hover:text-purple-200 transition-colors duration-300 mb-2">
 						ShieldBot
 					</h3>
 					
 					<!-- AI Assistant Badge -->
-					<div class="flex justify-center mb-4">
-						<span class="px-4 py-2 bg-gradient-to-r from-red-500/30 to-pink-500/30 text-red-200 text-sm font-semibold rounded-full border border-red-400/50 shadow-lg">
+					<div class="flex justify-center mb-3">
+						<span class="px-4 py-2 bg-gradient-to-r from-purple-500/30 to-purple-500/30 text-purple-200 text-sm font-semibold rounded-full border border-purple-400/50 shadow-lg">
 							AI Assistant
 						</span>
 					</div>
 					
 					<!-- Description -->
-					<p class="text-lg text-slate-300 group-hover:text-slate-200 transition-colors duration-300 leading-relaxed max-w-3xl mx-auto mb-6">
-						Your intelligent security companion. Get instant help with authentication, 
+					<p class="text-lg text-slate-300 group-hover:text-slate-200 transition-colors duration-300 leading-relaxed max-w-3xl mx-auto mb-4">
+						Your intelligent security companion. Get instant help with authentication,
 						security best practices, and system guidance powered by advanced AI.
 					</p>
 					
 					<!-- Action Buttons -->
 					<div class="flex items-center justify-center space-x-4">
-						<a 
+						<a
 							href="/chatbot"
-							class="px-6 py-3 bg-gradient-to-r from-red-600 to-pink-600 hover:from-red-500 hover:to-pink-500 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl hover:shadow-red-500/30 transform hover:scale-105 transition-all duration-300 flex items-center space-x-2"
+							class="px-6 py-3 bg-gradient-to-r from-purple-800/90 via-purple-700/80 to-purple-800/90 hover:from-purple-700/90 hover:via-purple-600/80 hover:to-purple-700/90 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl hover:shadow-purple-600/30 transform hover:scale-105 transition-all duration-300 flex items-center space-x-2 border border-purple-600/50 backdrop-blur-sm"
 						>
 							<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
 							</svg>
 							<span>Start Chat</span>
 						</a>
-						
-						<button 
+
+						<button
 							on:click={() => showWarning('ShieldBot is your AI security assistant. Click "Start Chat" to begin a conversation!')}
-							class="px-6 py-3 bg-gradient-to-r from-rose-600/80 to-pink-600/80 hover:from-rose-500 hover:to-pink-500 text-white font-semibold rounded-xl border border-rose-500/50 hover:border-rose-400/70 shadow-lg hover:shadow-xl hover:shadow-rose-500/30 transform hover:scale-105 transition-all duration-300 flex items-center space-x-2"
+							class="px-6 py-3 bg-gradient-to-r from-purple-800/80 via-purple-700/70 to-purple-800/80 hover:from-purple-700/80 hover:via-purple-600/70 hover:to-purple-700/80 text-white font-semibold rounded-xl border border-purple-600/50 hover:border-purple-500/70 shadow-lg hover:shadow-xl hover:shadow-purple-600/30 transform hover:scale-105 transition-all duration-300 flex items-center space-x-2 backdrop-blur-sm"
 						>
 							<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -300,47 +293,49 @@
 		</div>
 
 		<!-- Call to Action Section -->
-		<div class="group relative bg-gradient-to-r from-indigo-900/70 via-purple-900/60 to-blue-900/70 backdrop-blur-sm rounded-2xl p-8 border border-indigo-500/50 hover:border-indigo-400/70 shadow-2xl hover:shadow-3xl hover:shadow-indigo-500/30 transform hover:-translate-y-1 transition-all duration-500 overflow-hidden">
-			<!-- Animated background effects -->
-			<div class="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-blue-400/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-			<div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-400/10 to-transparent rounded-full blur-xl"></div>
-			<div class="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-blue-300/10 to-transparent rounded-full blur-lg"></div>
-			
-			<div class="relative z-10 text-center">
-				<h3 class="text-2xl font-bold text-white mb-4 group-hover:text-indigo-200 transition-colors duration-300">Ready to Get Started?</h3>
-				<p class="text-gray-300 mb-6 group-hover:text-gray-200 transition-colors duration-300">Join thousands of users who trust ShieldAuth for their authentication needs.</p>
+		<div class="text-center mb-12">
+			<h3 class="text-2xl font-bold text-white mb-4">Ready to Get Started?</h3>
+			<p class="text-gray-300 mb-8">Join thousands of users who trust ShieldAuth for their authentication needs.</p>
+
 			{#if $page.data.user}
-				<div class="flex flex-col sm:flex-row gap-6 justify-center">
+				<div class="flex flex-col sm:flex-row gap-4 justify-center">
 					<a
 						href="/dashboard"
-						class="group relative inline-flex justify-center items-center px-10 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 border border-blue-500/50 rounded-xl text-base font-semibold text-white shadow-lg hover:shadow-xl hover:shadow-blue-500/30 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-black transition-all duration-300"
+						class="group relative inline-flex justify-center items-center px-8 py-3 bg-gradient-to-r from-slate-800/90 via-slate-700/80 to-slate-800/90 hover:from-slate-700/90 hover:via-slate-600/80 hover:to-slate-700/90 border border-slate-600/50 rounded-lg text-sm font-semibold text-white shadow-lg hover:shadow-xl hover:shadow-slate-600/30 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2 focus:ring-offset-black transition-all duration-300 overflow-hidden backdrop-blur-sm"
 					>
-						<span class="relative z-10">Go to Dashboard</span>
+						<!-- Dark texture overlay -->
+						<div class="absolute inset-0 bg-gradient-to-r from-slate-600/10 via-transparent to-slate-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+						<span class="relative z-10">Dashboard</span>
 					</a>
 					<a
 						href="/profile"
-						class="group relative inline-flex justify-center items-center px-10 py-4 bg-gradient-to-r from-purple-600/80 to-indigo-600/80 hover:from-purple-500 hover:to-indigo-500 border border-purple-500/50 rounded-xl text-base font-semibold text-white shadow-lg hover:shadow-xl hover:shadow-purple-500/30 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-black transition-all duration-300"
+						class="group relative inline-flex justify-center items-center px-8 py-3 bg-gradient-to-r from-slate-800/90 via-slate-700/80 to-slate-800/90 hover:from-slate-700/90 hover:via-slate-600/80 hover:to-slate-700/90 border border-slate-600/50 rounded-lg text-sm font-semibold text-white shadow-lg hover:shadow-xl hover:shadow-slate-600/30 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2 focus:ring-offset-black transition-all duration-300 overflow-hidden backdrop-blur-sm"
 					>
-						<span class="relative z-10">View Profile</span>
+						<!-- Dark texture overlay -->
+						<div class="absolute inset-0 bg-gradient-to-r from-slate-600/10 via-transparent to-slate-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+						<span class="relative z-10">Profile</span>
 					</a>
 				</div>
 			{:else}
-				<div class="flex flex-col sm:flex-row gap-6 justify-center">
+				<div class="flex flex-col sm:flex-row gap-4 justify-center">
 					<a
 						href="/register"
-						class="group relative inline-flex justify-center items-center px-10 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 border border-blue-500/50 rounded-xl text-base font-semibold text-white shadow-lg hover:shadow-xl hover:shadow-blue-500/30 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-black transition-all duration-300"
+						class="group relative inline-flex justify-center items-center px-8 py-3 bg-gradient-to-r from-slate-800/90 via-slate-700/80 to-slate-800/90 hover:from-slate-700/90 hover:via-slate-600/80 hover:to-slate-700/90 border border-slate-600/50 rounded-lg text-sm font-semibold text-white shadow-lg hover:shadow-xl hover:shadow-slate-600/30 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2 focus:ring-offset-black transition-all duration-300 overflow-hidden backdrop-blur-sm"
 					>
+						<!-- Dark texture overlay -->
+						<div class="absolute inset-0 bg-gradient-to-r from-slate-600/10 via-transparent to-slate-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 						<span class="relative z-10">Get Started</span>
 					</a>
 					<a
 						href="/login"
-						class="group relative inline-flex justify-center items-center px-10 py-4 bg-gradient-to-r from-purple-600/80 to-indigo-600/80 hover:from-purple-500 hover:to-indigo-500 border border-purple-500/50 rounded-xl text-base font-semibold text-white shadow-lg hover:shadow-xl hover:shadow-purple-500/30 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-black transition-all duration-300"
+						class="group relative inline-flex justify-center items-center px-8 py-3 bg-gradient-to-r from-slate-800/90 via-slate-700/80 to-slate-800/90 hover:from-slate-700/90 hover:via-slate-600/80 hover:to-slate-700/90 border border-slate-600/50 rounded-lg text-sm font-semibold text-white shadow-lg hover:shadow-xl hover:shadow-slate-600/30 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2 focus:ring-offset-black transition-all duration-300 overflow-hidden backdrop-blur-sm"
 					>
+						<!-- Dark texture overlay -->
+						<div class="absolute inset-0 bg-gradient-to-r from-slate-600/10 via-transparent to-slate-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 						<span class="relative z-10">Sign In</span>
 					</a>
 				</div>
 			{/if}
-			</div>
 		</div>
 	</div>
 </main>
