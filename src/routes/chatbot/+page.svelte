@@ -23,14 +23,33 @@
 		isStreaming?: boolean;
 	}
 
+	interface Chat {
+		id: string;
+		title: string;
+		timestamp: Date;
+		isAutoRenamed?: boolean;
+	}
+
 	let messages: Message[] = [];
 	let isTyping = false;
 	let isStreaming = false;
 	let sidebarOpen = true;
 	let currentChatId = "1";
+	
+	// Initialize with first chat if available
+	$: if (chats.length > 0 && !chats.find(chat => chat.id === currentChatId)) {
+		currentChatId = chats[0].id;
+	}
 	let selectedModel = "models/gemini-1.5-flash";
 	let scrollAreaRef: any;
 	let error: string | null = null;
+	let showModelDropdown = false;
+	let chats: Chat[] = [
+		{ id: "1", title: "Getting started with AI", timestamp: new Date(Date.now() - 1000 * 60 * 30), isAutoRenamed: true },
+		{ id: "2", title: "React development tips", timestamp: new Date(Date.now() - 1000 * 60 * 60 * 2), isAutoRenamed: true },
+		{ id: "3", title: "Machine learning basics", timestamp: new Date(Date.now() - 1000 * 60 * 60 * 24), isAutoRenamed: true },
+		{ id: "4", title: "Web design principles", timestamp: new Date(Date.now() - 1000 * 60 * 60 * 48), isAutoRenamed: true },
+	];
 
 	const scrollToBottom = () => {
 		if (scrollAreaRef) {
@@ -55,7 +74,14 @@
 			timestamp: new Date(),
 		};
 
+		// Auto-rename chat if this is the first user message and chat hasn't been auto-renamed
+		const isFirstUserMessage = messages.length === 0;
+		if (isFirstUserMessage) {
+			autoRenameChat(currentChatId, text);
+		}
+		
 		messages = [...messages, userMessage];
+		
 		isTyping = true;
 		isStreaming = true;
 		error = null;
@@ -140,7 +166,16 @@
 	const handleNewChat = () => {
 		const newChatId = Date.now().toString();
 		currentChatId = newChatId;
+		// Add new chat to the list with default title and not auto-renamed
+		const newChat: Chat = {
+			id: newChatId,
+			title: "New Chat",
+			timestamp: new Date(),
+			isAutoRenamed: false
+		};
+		chats = [newChat, ...chats];
 		handleClearChat();
+		console.log('New chat created:', newChatId, 'Total chats:', chats.length);
 	};
 
 	const handleSelectChat = (chatId: string) => {
@@ -155,8 +190,77 @@
 
 	const handleModelChange = (model: string) => {
 		selectedModel = model;
+		showModelDropdown = false;
 		// In a real app, you would switch the AI model here
 		console.log("Model changed to:", model);
+	};
+
+	const models = [
+		{ value: "models/gemini-2.5-pro", label: "Gemini 2.5 Pro" },
+		{ value: "models/gemini-2.5-flash", label: "Gemini 2.5 Flash" },
+		{ value: "models/gemini-1.5-pro", label: "Gemini 1.5 Pro" },
+		{ value: "models/gemini-1.5-flash", label: "Gemini 1.5 Flash" }
+	];
+
+	const handleClickOutside = (event: MouseEvent) => {
+		const target = event.target as HTMLElement;
+		if (!target.closest('.model-dropdown')) {
+			showModelDropdown = false;
+		}
+	};
+
+	const extractTopicFromMessage = (message: string): string => {
+		// Simple topic extraction - take first few words and clean them up
+		const words = message.trim().split(/\s+/).slice(0, 4);
+		let topic = words.join(' ');
+		
+		// Remove common question words and clean up
+		topic = topic.replace(/^(what|how|why|when|where|can|could|would|should|is|are|do|does|did)\s+/i, '');
+		topic = topic.replace(/\?+$/, ''); // Remove trailing question marks
+		
+		// Capitalize first letter
+		topic = topic.charAt(0).toUpperCase() + topic.slice(1);
+		
+		// Limit length
+		if (topic.length > 30) {
+			topic = topic.substring(0, 27) + '...';
+		}
+		
+		return topic || 'New Chat';
+	};
+
+	const handleChatRename = (chatId: string, newTitle: string) => {
+		const chatIndex = chats.findIndex(chat => chat.id === chatId);
+		if (chatIndex !== -1) {
+			chats[chatIndex] = { ...chats[chatIndex], title: newTitle, isAutoRenamed: true };
+			chats = [...chats]; // Trigger reactivity
+		}
+	};
+
+	const handleChatDelete = (chatId: string) => {
+		chats = chats.filter(chat => chat.id !== chatId);
+		// If we deleted the current chat, switch to the first available chat or create a new one
+		if (currentChatId === chatId) {
+			if (chats.length > 0) {
+				currentChatId = chats[0].id;
+			} else {
+				handleNewChat();
+			}
+		}
+		console.log('Chat deleted:', chatId, 'Remaining chats:', chats.length);
+	};
+
+	const autoRenameChat = (chatId: string, firstMessage: string) => {
+		console.log('Auto-rename called for chat:', chatId, 'with message:', firstMessage);
+		const chatIndex = chats.findIndex(chat => chat.id === chatId);
+		console.log('Chat found at index:', chatIndex, 'isAutoRenamed:', chats[chatIndex]?.isAutoRenamed);
+		
+		if (chatIndex !== -1 && !chats[chatIndex].isAutoRenamed) {
+			const newTitle = extractTopicFromMessage(firstMessage);
+			console.log('Renaming chat to:', newTitle);
+			chats[chatIndex] = { ...chats[chatIndex], title: newTitle, isAutoRenamed: true };
+			chats = [...chats]; // Trigger reactivity
+		}
 	};
 </script>
 
@@ -164,6 +268,8 @@
 	<title>ShieldBot - AI Assistant</title>
 	<meta name="description" content="Chat with ShieldBot AI Assistant" />
 </svelte:head>
+
+<svelte:window on:click={handleClickOutside} />
 
 
 <div class="h-screen flex bg-black text-white">
@@ -173,11 +279,53 @@
 		{handleNewChat}
 		{currentChatId}
 		{handleSelectChat}
-		{selectedModel}
-		onModelChange={handleModelChange}
+		{chats}
+		onChatRename={handleChatRename}
+		onChatDelete={handleChatDelete}
 	/>
 	
 	<div class="flex-1 flex flex-col relative z-0">
+		<!-- Sidebar Toggle Button (when sidebar is closed) -->
+		{#if !sidebarOpen}
+			<button
+				on:click={() => sidebarOpen = true}
+				class="absolute top-4 left-4 z-50 p-3 bg-black/80 border border-gray-600 rounded-lg text-white hover:bg-gray-800 transition-all duration-300 shadow-lg backdrop-blur-sm"
+				aria-label="Open sidebar"
+			>
+				<svg class="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+				</svg>
+			</button>
+		{/if}
+
+		<!-- Model Selection Dropdown - Top Left -->
+		<div class="absolute top-4 {sidebarOpen ? 'left-4' : 'left-20'} z-50 model-dropdown transition-all duration-300">
+			<div class="relative">
+				<button
+					on:click={() => showModelDropdown = !showModelDropdown}
+					class="flex items-center gap-2 px-4 py-2 bg-black/80 border border-gray-600 rounded-lg text-white hover:bg-gray-800 transition-all duration-300 shadow-lg backdrop-blur-sm"
+				>
+					<span class="text-sm font-medium">{models.find(m => m.value === selectedModel)?.label || 'Select Model'}</span>
+					<svg class="size-4 transition-transform {showModelDropdown ? 'rotate-180' : ''}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+					</svg>
+				</button>
+				
+				{#if showModelDropdown}
+					<div class="absolute top-full left-0 mt-1 w-48 bg-black border border-gray-600 rounded-lg shadow-2xl max-h-60 overflow-y-auto z-50">
+						{#each models as model}
+							<button
+								on:click={() => handleModelChange(model.value)}
+								class="w-full text-left px-3 py-2 text-white hover:bg-gray-800 transition-colors first:rounded-t-lg last:rounded-b-lg {model.value === selectedModel ? 'bg-gray-800' : ''}"
+							>
+								{model.label}
+							</button>
+						{/each}
+					</div>
+				{/if}
+			</div>
+		</div>
+
 		<ScrollArea bind:this={scrollAreaRef} class="flex-1 bg-gradient-to-br from-gray-900 via-black to-gray-900 relative overflow-hidden">
 			<!-- Background texture overlay -->
 			<div class="absolute inset-0 opacity-5">
@@ -195,7 +343,7 @@
 			<div class="absolute bottom-20 left-20 w-24 h-24 bg-purple-500/10 rounded-full blur-xl"></div>
 			<div class="absolute top-1/2 left-10 w-16 h-16 bg-indigo-400/5 rounded-full blur-lg"></div>
 			
-			<div class="relative z-10 min-h-full flex flex-col">
+			<div class="relative z-10 min-h-full flex flex-col pt-20">
 				{#if error}
 					<div class="mx-4 mt-4 p-3 bg-red-900/20 border border-red-500/30 rounded-lg">
 						<div class="flex items-center gap-2">

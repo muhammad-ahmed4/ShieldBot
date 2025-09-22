@@ -8,21 +8,17 @@
 	export let handleNewChat: () => void;
 	export let currentChatId: string;
 	export let handleSelectChat: (chatId: string) => void;
-	export let selectedModel: string = "models/gemini-1.5-flash";
-	export let onModelChange: (model: string) => void;
 
 	interface Chat {
 		id: string;
 		title: string;
 		timestamp: Date;
+		isAutoRenamed?: boolean;
 	}
 
-	const chats: Chat[] = [
-		{ id: "1", title: "Getting started with AI", timestamp: new Date(Date.now() - 1000 * 60 * 30) },
-		{ id: "2", title: "React development tips", timestamp: new Date(Date.now() - 1000 * 60 * 60 * 2) },
-		{ id: "3", title: "Machine learning basics", timestamp: new Date(Date.now() - 1000 * 60 * 60 * 24) },
-		{ id: "4", title: "Web design principles", timestamp: new Date(Date.now() - 1000 * 60 * 60 * 48) },
-	];
+	export let chats: Chat[] = [];
+	export let onChatRename: (chatId: string, newTitle: string) => void;
+	export let onChatDelete: (chatId: string) => void;
 
 	const userInfo = {
 		name: $page.data.user?.name || "User",
@@ -30,12 +26,6 @@
 		image: $page.data.user?.image || null
 	};
 
-	const models = [
-		{ value: "models/gemini-2.5-pro", label: "Gemini 2.5 Pro" },
-		{ value: "models/gemini-2.5-flash", label: "Gemini 2.5 Flash" },
-		{ value: "models/gemini-1.5-pro", label: "Gemini 1.5 Pro" },
-		{ value: "models/gemini-1.5-flash", label: "Gemini 1.5 Flash" }
-	];
 
 	const formatChatTime = (date: Date) => {
 		const now = new Date();
@@ -49,35 +39,28 @@
 
 	let showUserDropdown = false;
 	let showChatDropdown: string | null = null;
-	let showModelDropdown = false;
 
 	const handleClickOutside = (event: MouseEvent) => {
 		const target = event.target as HTMLElement;
 		if (!target.closest('.dropdown')) {
 			showUserDropdown = false;
 			showChatDropdown = null;
-			showModelDropdown = false;
 		}
 	};
 
-	const handleModelSelect = (model: string) => {
-		onModelChange(model);
-		showModelDropdown = false;
-	};
 
 	const handleBackToDashboard = () => {
 		goto('/');
 	};
 
 	const handleRenameChat = (chatId: string) => {
-		// TODO: Implement rename functionality
-		console.log('Rename chat:', chatId);
+		// TODO: Implement manual rename functionality
+		console.log('Manual rename chat:', chatId);
 		showChatDropdown = null;
 	};
 
 	const handleDeleteChat = (chatId: string) => {
-		// TODO: Implement delete functionality
-		console.log('Delete chat:', chatId);
+		onChatDelete(chatId);
 		showChatDropdown = null;
 	};
 </script>
@@ -106,42 +89,13 @@
 				</button>
 			</div>
 
-			<!-- Back to Dashboard Button -->
+			<!-- Back to Home Button -->
 			<button
 				on:click={handleBackToDashboard}
-				class="w-full flex items-center gap-3 p-3 bg-gradient-to-r from-blue-600/80 via-indigo-600/70 to-purple-600/80 hover:from-blue-500/80 hover:via-indigo-500/70 hover:to-purple-500/80 text-white rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-blue-500/20 transform hover:-translate-y-0.5 mb-4"
+				class="w-full flex items-center justify-center p-3 bg-gradient-to-r from-blue-600/80 via-indigo-600/70 to-purple-600/80 hover:from-blue-500/80 hover:via-indigo-500/70 hover:to-purple-500/80 text-white rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-blue-500/20 transform hover:-translate-y-0.5 mb-4"
 			>
-				<svg class="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-				</svg>
-				<span class="font-medium">Back to Dashboard</span>
+				<span class="font-medium">Back to Home</span>
 			</button>
-
-			<!-- Model Selection -->
-			<div class="relative dropdown">
-				<button
-					on:click={() => showModelDropdown = !showModelDropdown}
-					class="w-full flex items-center justify-between p-3 bg-gradient-to-r from-gray-800/80 via-gray-700/70 to-gray-800/80 border border-gray-600/50 text-white hover:from-gray-700/80 hover:via-gray-600/70 hover:to-gray-700/80 transition-all duration-300 rounded-xl shadow-lg hover:shadow-xl hover:shadow-gray-500/10 transform hover:-translate-y-0.5"
-				>
-					<span class="text-sm font-medium">Model: {models.find(m => m.value === selectedModel)?.label || 'Select Model'}</span>
-					<svg class="size-4 transition-transform {showModelDropdown ? 'rotate-180' : ''}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-					</svg>
-				</button>
-				
-				{#if showModelDropdown}
-					<div class="absolute top-full left-0 mt-1 w-full bg-gray-800 border border-gray-600 rounded-xl shadow-2xl max-h-60 overflow-y-auto" style="z-index: 999999999 !important;">
-						{#each models as model}
-							<button
-								on:click={() => handleModelSelect(model.value)}
-								class="w-full text-left px-3 py-2 text-white hover:bg-gray-700 transition-colors first:rounded-t-xl last:rounded-b-xl {model.value === selectedModel ? 'bg-gray-700' : ''}"
-							>
-								{model.label}
-							</button>
-						{/each}
-					</div>
-				{/if}
-			</div>
 		</div>
 
 		<!-- New Chat Button -->
@@ -193,16 +147,16 @@
 									</button>
 									
 									{#if showChatDropdown === chat.id}
-										<div class="absolute right-0 top-full mt-1 w-32 bg-gray-800 border border-gray-600 rounded-lg shadow-lg" style="z-index: 999999999 !important;">
+										<div class="absolute right-0 top-full mt-1 w-32 bg-black border border-gray-600 rounded-lg shadow-lg z-50">
 											<button
 												on:click={() => handleRenameChat(chat.id)}
-												class="w-full text-left px-3 py-2 text-white hover:bg-gray-700 transition-colors rounded-lg text-sm"
+												class="w-full text-left px-3 py-2 text-white hover:bg-gray-800 transition-colors rounded-lg text-sm"
 											>
 												Rename
 											</button>
 											<button
 												on:click={() => handleDeleteChat(chat.id)}
-												class="w-full text-left px-3 py-2 text-white hover:bg-gray-700 transition-colors rounded-lg text-sm"
+												class="w-full text-left px-3 py-2 text-white hover:bg-gray-800 transition-colors rounded-lg text-sm"
 											>
 												Delete
 											</button>
@@ -259,11 +213,11 @@
 					</button>
 					
 					{#if showUserDropdown}
-						<div class="absolute right-0 bottom-full mb-1 w-36 bg-gray-800 border border-gray-600 rounded-lg shadow-lg" style="z-index: 999999999 !important;">
-							<a href="/dashboard" class="block w-full text-left px-3 py-2 text-white hover:bg-gray-700 transition-colors rounded-lg text-sm">
+						<div class="absolute right-0 bottom-full mb-1 w-36 bg-black border border-gray-600 rounded-lg shadow-lg z-50">
+							<a href="/dashboard" class="block w-full text-left px-3 py-2 text-white hover:bg-gray-800 transition-colors rounded-lg text-sm">
 								Dashboard
 							</a>
-							<a href="/profile" class="block w-full text-left px-3 py-2 text-white hover:bg-gray-700 transition-colors rounded-lg text-sm">
+							<a href="/profile" class="block w-full text-left px-3 py-2 text-white hover:bg-gray-800 transition-colors rounded-lg text-sm">
 								Profile
 							</a>
 						</div>
