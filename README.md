@@ -1,6 +1,6 @@
-# ShieldAuth - Modern Secure Authentication System
+# ShieldAuth - Modern Secure Authentication System with AI Assistant
 
-A comprehensive, production-ready authentication application built with cutting-edge web technologies. ShieldAuth provides secure user authentication, role-based access control, and a beautiful modern interface with advanced admin capabilities.
+A comprehensive, production-ready authentication application built with cutting-edge web technologies. ShieldAuth provides secure user authentication, role-based access control, a beautiful modern interface with advanced admin capabilities, and an integrated AI chatbot assistant for cybersecurity guidance.
 
 ## 🚀 Technology Stack
 
@@ -8,10 +8,31 @@ A comprehensive, production-ready authentication application built with cutting-
 - **Authentication**: Auth.js with PostgreSQL Database Sessions (No JWT)
 - **Styling**: TailwindCSS with custom dark theme
 - **Database**: PostgreSQL with Drizzle ORM
+- **AI Integration**: Google Gemini AI with streaming responses
 - **Security**: CSRF protection, bcrypt hashing, secure sessions
 - **Deployment**: Docker-ready with comprehensive configuration
 
 ## ✨ Core Features
+
+### 🤖 **ShieldBot AI Assistant**
+
+#### **Intelligent Chat Interface**
+
+- **Real-time AI Chat** - Interactive conversation with ShieldBot AI assistant
+- **Word-by-Word Streaming** - Natural typing effect with streaming responses
+- **Cybersecurity Focus** - Specialized in authentication, security, and digital safety
+- **Multiple AI Models** - Support for Gemini 2.5 Pro, 2.5 Flash, 1.5 Pro, and 1.5 Flash
+- **Chat Management** - Create, rename, delete, and organize chat conversations
+- **Auto-Rename** - Automatic chat naming based on first message topic
+- **Responsive Design** - Full-screen chat interface with collapsible sidebar
+
+#### **AI Features**
+
+- **Streaming Responses** - Real-time word-by-word AI response streaming
+- **Model Selection** - Choose between different Gemini AI models
+- **Chat History** - Persistent chat conversations with timestamps
+- **Security Guidance** - Expert advice on password security, phishing protection, 2FA, and network security
+- **Interactive Prompts** - Pre-built conversation starters for common security topics
 
 ### 🔐 **Authentication System**
 
@@ -72,9 +93,18 @@ A comprehensive, production-ready authentication application built with cutting-
 
 - **Hero Section** - Engaging landing page with feature showcase
 - **Feature Cards** - Interactive cards highlighting system capabilities
-- **ShieldBot Integration** - AI chatbot card (currently disabled but UI ready)
+- **ShieldBot Integration** - AI chatbot card with purple theme and functional buttons
 - **Call-to-Action** - Beautiful gradient buttons for user engagement
 - **Professional Footer** - Complete site navigation and social links
+
+#### **ShieldBot Chat Interface**
+
+- **Full-Screen Chat** - Immersive chat experience without navbar distractions
+- **Collapsible Sidebar** - Chat history and management with toggle functionality
+- **Model Selection** - Dropdown to choose AI model with real-time switching
+- **Streaming Responses** - Word-by-word AI response streaming for natural conversation
+- **Chat Prompts** - Pre-built conversation starters for security topics
+- **Auto-Rename** - Intelligent chat naming based on conversation topics
 
 #### **Authentication Pages**
 
@@ -89,7 +119,7 @@ A comprehensive, production-ready authentication application built with cutting-
 - **Profile Management** - Complete user profile with picture upload
 - **Settings Panel** - User preferences and account settings
 - **Activity Overview** - User activity and account information
-- **Change Password** - Secure password update functionality
+- **Change Password** - Secure password update with modern lock icon
 
 #### **Admin Interface**
 
@@ -109,6 +139,9 @@ DATABASE_URL="postgresql://postgres:password@localhost:5433/authapp"
 # Authentication Secret (Required)
 AUTH_SECRET="your-super-secret-auth-key-here"
 
+# AI Configuration (Required for ShieldBot)
+GOOGLE_AI_API_KEY="your-google-ai-api-key"
+
 # OAuth Configuration (Optional)
 GOOGLE_CLIENT_ID="your-google-client-id"
 GOOGLE_CLIENT_SECRET="your-google-client-secret"
@@ -124,6 +157,7 @@ NODE_ENV="development"
 - Uses **PostgreSQL only** - no SQLite fallback
 - Custom port `5433` to avoid conflicts
 - Generate secure AUTH_SECRET: `openssl rand -base64 32`
+- **Google AI API Key required** for ShieldBot functionality
 - OAuth credentials are optional
 
 ## 🏗️ Project Structure
@@ -135,17 +169,24 @@ src/
 │   │   ├── Button.svelte
 │   │   ├── Card.svelte
 │   │   ├── Input.svelte
-│   │   └── Notification.svelte
+│   │   ├── Notification.svelte
+│   │   └── EnhancedMessageRenderer.svelte
 │   ├── server/              # Server-side utilities
 │   │   ├── auth.ts          # Auth.js configuration
+│   │   ├── ai.ts            # AI service integration
 │   │   ├── db/              # Database schema and connection
 │   │   ├── email.ts         # Email service
 │   │   └── security.ts      # Security utilities
+│   ├── services/            # Client-side services
+│   │   └── clientChatService.ts  # AI chat service
 │   └── stores/              # Svelte stores
 ├── routes/                  # Application routes
 │   ├── api/                 # API endpoints
+│   │   ├── auth/            # Authentication endpoints
+│   │   └── chat/            # AI chat streaming endpoints
 │   ├── admin/               # Admin-only pages
 │   ├── auth/                # Authentication pages
+│   ├── chatbot/             # ShieldBot AI chat interface
 │   └── (pages)/             # Public and protected pages
 └── static/                  # Static assets
 ```
@@ -175,6 +216,7 @@ npm run db:push
 ```bash
 cp .env.example .env
 # Edit .env with your configuration
+# IMPORTANT: Add your Google AI API key for ShieldBot
 ```
 
 ### 4. **Start Development**
@@ -184,6 +226,31 @@ npm run dev
 ```
 
 Visit [http://localhost:5173](http://localhost:5173) to see your application!
+
+## 🤖 ShieldBot AI Features
+
+### **Getting Started with ShieldBot**
+
+1. **Navigate to Chatbot** - Click "Start Chat" on the homepage or visit `/chatbot`
+2. **Choose AI Model** - Select from Gemini 2.5 Pro, 2.5 Flash, 1.5 Pro, or 1.5 Flash
+3. **Start Conversation** - Use pre-built prompts or ask your own security questions
+4. **Streaming Responses** - Watch AI responses appear word-by-word in real-time
+
+### **AI Capabilities**
+
+- **Password Security** - Best practices for strong passwords
+- **Phishing Protection** - How to identify and avoid phishing scams
+- **Two-Factor Authentication** - Benefits and setup guidance
+- **Network Security** - Securing home Wi-Fi and devices
+- **General Cybersecurity** - Comprehensive security advice
+
+### **Chat Management**
+
+- **Auto-Rename** - Chats automatically named based on first message
+- **Manual Rename** - Custom chat titles for organization
+- **Chat History** - Persistent conversation storage
+- **Delete Chats** - Remove unwanted conversations
+- **New Chat** - Start fresh conversations anytime
 
 ## 👑 Admin Features
 
@@ -221,11 +288,15 @@ npm run promote-admin your-email@example.com
 
 ### **Public Routes**
 
-- `/` - Homepage with feature showcase
+- `/` - Homepage with feature showcase and ShieldBot card
 - `/about` - About page with slide-up animations
 - `/contact` - Contact page with modern UI
 - `/register` - User registration with email verification
 - `/login` - User login with OAuth options
+
+### **AI Chat Routes**
+
+- `/chatbot` - ShieldBot AI chat interface with streaming responses
 
 ### **Authentication Routes**
 
@@ -252,6 +323,7 @@ npm run promote-admin your-email@example.com
 - `/api/auth/*` - Authentication endpoints
 - `/api/profile/*` - Profile management
 - `/api/admin/users/*` - Admin user management
+- `/api/chat/stream` - AI chat streaming endpoint
 
 ## 🛠️ Development Scripts
 
@@ -282,6 +354,13 @@ npm run promote-admin <email>  # Promote user to admin role
 
 ## 🎯 Key Features Breakdown
 
+### **AI Chat Flow**
+
+1. **Model Selection** → Choose AI model → Start conversation
+2. **Streaming Response** → Word-by-word streaming → Real-time display
+3. **Chat Management** → Auto-rename → Manual organization
+4. **Security Guidance** → Expert advice → Interactive learning
+
 ### **Authentication Flow**
 
 1. **Registration** → Email verification → Account activation
@@ -302,6 +381,7 @@ npm run promote-admin <email>  # Promote user to admin role
 2. **Animations** → Slide-up text animations and smooth transitions
 3. **Responsive** → Perfect display on all devices
 4. **Accessibility** → ARIA labels and keyboard navigation
+5. **Streaming** → Real-time AI response streaming
 
 ## 🔒 Security Implementation
 
@@ -326,6 +406,13 @@ npm run promote-admin <email>  # Promote user to admin role
 - **SQL Injection Protection** - Drizzle ORM parameterized queries
 - **XSS Protection** - Input sanitization and output encoding
 
+### **AI Security**
+
+- **API Key Protection** - Secure server-side AI API key handling
+- **Input Sanitization** - All user inputs sanitized before AI processing
+- **Rate Limiting** - Protection against AI API abuse
+- **Error Handling** - Graceful AI service error management
+
 ## 🚀 Deployment
 
 ### **Production Checklist**
@@ -333,6 +420,7 @@ npm run promote-admin <email>  # Promote user to admin role
 - ✅ Set `NODE_ENV=production`
 - ✅ Configure production database URL
 - ✅ Set secure `AUTH_SECRET`
+- ✅ Configure `GOOGLE_AI_API_KEY` for ShieldBot
 - ✅ Enable SSL for database connections
 - ✅ Configure reverse proxy
 - ✅ Set up monitoring and logging
@@ -352,6 +440,7 @@ docker-compose -f docker-compose.full.yml up -d
 - **Component Library** - Reusable, optimized components
 - **TailwindCSS Purging** - Optimized CSS for production
 - **Image Optimization** - Compressed and optimized assets
+- **Streaming Optimization** - Efficient AI response streaming
 
 ### **Backend**
 
@@ -359,6 +448,7 @@ docker-compose -f docker-compose.full.yml up -d
 - **Query Optimization** - Optimized database queries
 - **Caching** - Strategic caching implementation
 - **Error Handling** - Graceful error management
+- **AI Response Caching** - Optimized AI service calls
 
 ## 🤝 Contributing
 
@@ -379,7 +469,21 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [TailwindCSS](https://tailwindcss.com/) - Utility-first CSS framework
 - [Drizzle ORM](https://orm.drizzle.team/) - TypeScript ORM
 - [PostgreSQL](https://www.postgresql.org/) - Advanced open source database
+- [Google Gemini AI](https://ai.google.dev/) - Advanced AI capabilities
 
 ---
 
-**ShieldAuth** - Built with ❤️ using modern web technologies for secure, scalable authentication.
+**ShieldAuth** - Built with ❤️ using modern web technologies for secure, scalable authentication with intelligent AI assistance.
+
+## 🔮 Recent Updates
+
+### **v2.0 - ShieldBot AI Integration**
+
+- ✅ **AI Chat Interface** - Full-screen chat with ShieldBot AI assistant
+- ✅ **Streaming Responses** - Word-by-word AI response streaming
+- ✅ **Model Selection** - Support for multiple Gemini AI models
+- ✅ **Chat Management** - Auto-rename, manual rename, and chat organization
+- ✅ **Security Focus** - Specialized cybersecurity guidance and advice
+- ✅ **Responsive Design** - Mobile-optimized chat interface
+- ✅ **UI Improvements** - Fixed ShieldBot card styling and dashboard icons
+- ✅ **Performance** - Optimized streaming and error handling
