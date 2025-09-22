@@ -44,7 +44,6 @@
   },
   "dependencies": {
     "@ai-sdk/google": "^0.0.50",
-    "@ai-sdk/ui": "^0.0.50",
     "@auth/core": "^0.40.0",
     "@auth/drizzle-adapter": "^1.10.0",
     "@auth/sveltekit": "^1.10.0",
