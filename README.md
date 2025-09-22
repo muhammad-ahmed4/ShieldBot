@@ -213,11 +213,34 @@ npm run db:push
 
 ### 3. **Environment Configuration**
 
+Create a `.env` file in the root directory with the following variables:
+
 ```bash
-cp .env.example .env
-# Edit .env with your configuration
-# IMPORTANT: Add your Google AI API key for ShieldBot
+# Database Configuration
+DATABASE_URL="postgresql://postgres:password@localhost:5433/Authapp"
+
+# Authentication Configuration
+AUTH_SECRET="your-auth-secret-here-generate-a-long-random-string"
+AUTH_TRUST_HOST=true
+
+# OAuth Configuration (Optional)
+GOOGLE_CLIENT_ID="your-google-client-id"
+GOOGLE_CLIENT_SECRET="your-google-client-secret"
+GITHUB_CLIENT_ID="your-github-client-id"
+GITHUB_CLIENT_SECRET="your-github-client-secret"
+
+# AI Configuration (Required for ShieldBot)
+GOOGLE_AI_API_KEY="your-google-ai-api-key"
+
+# Email Configuration (Optional - for email verification and password reset)
+SENDGRID_API_KEY="your-sendgrid-api-key"
+FROM_EMAIL="noreply@yourdomain.com"
+
+# Application Configuration
+NODE_ENV="development"
 ```
+
+**Important**: The `GOOGLE_AI_API_KEY` is required for ShieldBot functionality.
 
 ### 4. **Start Development**
 
